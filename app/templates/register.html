@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>Rekrutacja</title>
+    </head>
+    <body>
+        <h1>Zarejestruj się</h1>
+        <form method="POST" action="register_page" id="form1">
+            {{ user_form.as_p }}
+            {{ recruiter_form.as_p }}
+            {% csrf_token %}
+        </form>
+
+        <button type="submit" value="Submit" form="form1">Zarejestruj się</button>
+    </body>
+    
+</html>

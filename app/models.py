@@ -14,8 +14,17 @@ class Recruiter(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
-    organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
+    organization = models.CharField(max_length=50)
     is_superadmin = models.BooleanField(default=False)
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Recruiter.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.recruiter.save()
 
 
 class Candidate(models.Model):
@@ -24,7 +33,7 @@ class Candidate(models.Model):
     last_name = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
-    
+
 
 class JobPosting(models.Model):
     job_possition = models.CharField(max_length=30)

@@ -3,8 +3,14 @@
         <title>Rekrutacja</title>
     </head>
     <body>
-        <h1>Rekrutacja na stanowisko programisty</h1>
-        <button id="regButton" onclick="window.location.href = 'http://localhost:8000/register/';">Zarejestruj się</button>
+        <h1>Rekrutacja na stanowisko programisty</h1>        
+        <button id="regButton" >Zarejestruj się</button>
+
+        <script type="text/javascript">
+            document.getElementById("regButton").onclick = function () {
+                location.href = "{% url 'register_page' %}";
+            };
+        </script>
     </body>
     
 </html>

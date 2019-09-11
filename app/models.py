@@ -1,7 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 
 
 
@@ -16,16 +14,7 @@ class Recruiter(models.Model):
     email = models.CharField(max_length=50)
     organization = models.CharField(max_length=50)
     is_superadmin = models.BooleanField(default=False)
-
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        Recruiter.objects.create(user=instance)
-
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.recruiter.save()
-
+    
 
 class Candidate(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

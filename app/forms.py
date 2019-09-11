@@ -5,7 +5,6 @@ from app.models import Recruiter
 from django.forms import ModelForm
 
 class SignUpForm(ModelForm):
-
     class Meta:
         model = Recruiter
         fields = ('organization', 'first_name', 'last_name', 'email' )

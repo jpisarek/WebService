@@ -12,7 +12,7 @@ class Recruiter(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
-    organization = models.CharField(max_length=50)
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
     is_superadmin = models.BooleanField(default=False)
     
 

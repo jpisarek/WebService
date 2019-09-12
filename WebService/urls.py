@@ -23,5 +23,5 @@ from app import views
 urlpatterns = [
     url(r'^$', views.home_page, name='home_page'),
     url(r'^register/', views.register_page, name='register_page'),
-    # url(r'^admin/', include(admin.site.urls))
+    url(r'^admin/', admin.site.urls)
 ]

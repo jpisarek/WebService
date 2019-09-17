@@ -6,7 +6,7 @@
         <h1>Zarejestruj się</h1>
         <form method="POST" action="register_page" id="form1">
             {{ user_form.as_p }}
-            {{ recruiter_form.as_p }}
+            {{ candidate_form.as_p }}
             {% csrf_token %}
         </form>
 

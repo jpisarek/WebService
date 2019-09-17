@@ -6,6 +6,9 @@ from django.contrib.auth.models import User
 class Organization(models.Model):
     name = models.CharField(max_length=50)
 
+    def __str__(self):
+        return str(self.name)
+
 
 class Recruiter(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -14,7 +17,7 @@ class Recruiter(models.Model):
     email = models.CharField(max_length=50)
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
     is_superadmin = models.BooleanField(default=False)
-    
+      
 
 class Candidate(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

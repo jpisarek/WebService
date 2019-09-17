@@ -5,10 +5,15 @@
     <body>
         <h1>Rekrutacja na stanowisko programisty</h1>        
         <button id="regButton" >Zarejestruj się</button>
+        <button id="logButton" >Zaloguj się</button>
 
         <script type="text/javascript">
             document.getElementById("regButton").onclick = function () {
                 location.href = "{% url 'register_page' %}";
+            };
+
+            document.getElementById("logButton").onclick = function () {
+                location.href = "{% url 'login_page' %}";
             };
         </script>
     </body>

@@ -10,14 +10,25 @@ def home_page(request):
 def register_page(request):
     if request.method == 'POST':
         user_form = UserCreationForm(request.POST)
-        recruiter_form = SignUpForm(request.POST)
-        if user_form.is_valid() and recruiter_form.is_valid():
+        candidate_form = SignUpForm(request.POST)
+        if user_form.is_valid() and candidate_form.is_valid():
             user = user_form.save()
-            recruiter = recruiter_form.save(commit=False)
-            recruiter.user = user
-            recruiter.save()            
+            candidate = candidate_form.save(commit=False)
+            candidate.user = user
+            candidate.save()            
             return redirect('home.html')
     else:
         user_form = UserCreationForm()
-        recruiter_form = SignUpForm()
-    return render(request, 'register.html', {'user_form': user_form, 'recruiter_form': recruiter_form})
+        candidate_form = SignUpForm()
+    return render(request, 'register.html', {'user_form': user_form, 'candidate_form': candidate_form})
+
+def login_page(request):
+    username = request.POST.get['username']
+    password = request.POST.get['password']
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return redirect('home.html')
+    else:
+        return redirect('login.html')
+    # return render(request, 'login.html')

@@ -116,3 +116,16 @@ ol > li > ul > li:hover > a
 {
 	color: #013801;
 }
+
+table
+{
+	width: 100%;
+	border-collapse: collapse;
+}
+
+td, th
+{
+	border: 1px solid #dddddd;
+  	text-align: left;
+  	padding: 8px;
+}

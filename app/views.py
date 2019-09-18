@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
 from app.forms import SignUpForm
+from app.models import Candidate
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 
 def home_page(request):
     return render(request, 'home.html')
@@ -32,5 +34,10 @@ def register_page(request):
 #     else:
 #         return redirect('login.html')
 
+@login_required
 def recruiter_home(request):
     return render(request, 'recruiter_home.html')
+
+def recruiter_rank(request):
+    candidates = Candidate.objects.all().order_by('id')
+    return render(request, 'recruiter_rank.html', {'candidates': candidates})

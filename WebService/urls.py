@@ -26,5 +26,6 @@ urlpatterns = [
     # url(r'^login/', views.login_page, name='login_page'),
     url(r'^user/', include('django.contrib.auth.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^recruiter/home', views.recruiter_home, name='recruiter_home')
+    url(r'^recruiter/home', views.recruiter_home, name='recruiter_home'),
+    url(r'^recruiter/rank', views.recruiter_rank, name='recruiter_rank')
 ]

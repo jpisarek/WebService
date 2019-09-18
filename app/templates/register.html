@@ -1,16 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
         <title>Rekrutacja</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
     </head>
     <body>
-        <h1>Zarejestruj się</h1>
-        <form method="POST" action="register_page" id="form1">
-            {{ user_form.as_p }}
-            {{ candidate_form.as_p }}
-            {% csrf_token %}
-        </form>
-
-        <button type="submit" value="Submit" form="form1">Zarejestruj się</button>
+        <div class="area"></div>
+        <div class="header">
+            <h1>Zarejestruj się</h1>
+        </div>
+        <div class="login">
+            <form method="POST" action="register_page" id="form1">
+                {{ user_form.as_p }}
+                {{ candidate_form.as_p }}
+                {% csrf_token %}
+            </form>
+        </div>
+        
+        <div class="buttons">
+            <button type="submit" value="Submit" form="form1">Zarejestruj się</button>
+        </div>
     </body>
     
 </html>

@@ -1,11 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
         <title>Rekrutacja</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
     </head>
     <body>
-        <h1>Rekrutacja na stanowisko programisty</h1>        
-        <button id="regButton" >Zarejestruj się</button>
-        <button id="logButton" >Zaloguj się</button>
+        <div class="buttons_home">
+                <button id="regButton" >Zarejestruj się</button>
+                <button id="logButton" >Zaloguj się</button>
+        </div> 
+        <div class="area"></div>
+        <div class="header">
+            <h1>Rekrutacja na stanowisko programisty</h1>       
+        </div>
 
         <script type="text/javascript">
             document.getElementById("regButton").onclick = function () {

@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
-from app.forms import SignUpForm
-from app.models import Candidate
+from app.forms import SignUpForm, QuizAddForm, QuestionAddForm, AnswerAddForm
+from app.models import Candidate, Quiz, Question
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 
@@ -36,8 +36,35 @@ def register_page(request):
 
 @login_required
 def recruiter_home(request):
-    return render(request, 'recruiter_home.html')
+    return render(request, 'recruiter/recruiter_home.html')
 
+@login_required
 def recruiter_rank(request):
     candidates = Candidate.objects.all().order_by('id')
-    return render(request, 'recruiter_rank.html', {'candidates': candidates})
+    return render(request, 'recruiter/recruiter_rank.html', {'candidates': candidates})
+
+
+def recruiter_quiz_add(request):
+    if request.method == 'POST':
+        quiz_form = QuizAddForm(request.POST)
+        if quiz_form.is_valid():
+            organization = quiz_form.cleaned_data.get('organization')
+            name = quiz_form.cleaned_data.get('name')
+            level = quiz_form.cleaned_data.get('level')
+            quiz_form.save()
+            return redirect('recruiter_question_add')
+    else:
+        quiz_form = QuizAddForm()
+    return render(request, 'recruiter/recruiter_quiz_add.html', {'quiz_form': quiz_form,},)
+
+def recruiter_question_add(request):
+    if request.method == 'POST':
+        question_form = QuestionAddForm(request.POST)
+        if question_form.is_valid():
+            name = question_form.cleaned_data.get('name')
+            content = question_form.cleaned_data.get('content')
+            question_form.save()
+            return redirect('recruiter_question_add')
+    else:
+        question_form = QuestionAddForm()
+    return render(request, 'recruiter/recruiter_question_add.html', {'question_form': question_form,},)

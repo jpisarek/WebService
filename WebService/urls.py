@@ -24,8 +24,10 @@ urlpatterns = [
     url(r'^$', views.home_page, name='home_page'),
     url(r'^register/', views.register_page, name='register_page'),
     # url(r'^login/', views.login_page, name='login_page'),
-    url(r'^user/', include('django.contrib.auth.urls')),
+    url(r'^user/', include('django.contrib.auth.urls'), name='login'),
     url(r'^admin/', admin.site.urls),
     url(r'^recruiter/home', views.recruiter_home, name='recruiter_home'),
-    url(r'^recruiter/rank', views.recruiter_rank, name='recruiter_rank')
+    url(r'^recruiter/rank', views.recruiter_rank, name='recruiter_rank'),
+    url(r'^recruiter/quiz/add', views.recruiter_quiz_add, name='recruiter_quiz_add'),
+    url(r'^recruiter/quiz/question/', views.recruiter_question_add, name='recruiter_question_add'),
 ]

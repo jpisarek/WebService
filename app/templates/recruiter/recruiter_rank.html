@@ -1,0 +1,23 @@
+{% extends 'recruiter/recruiter_home.html' %}
+
+{% block ranking %}
+    <div class="header">
+        <h3>Ranking kandydatów</h3>   
+    </div>
+    <div class="rank">
+        <table>
+            <tr>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Opis</th>
+            </tr>
+            {% for candidate in candidates %}
+            <tr>                    
+                <td>{{ candidate.first_name }}</td>
+                <td>{{ candidate.last_name }}</td>
+                <td>{{ candidate.description }}</td>
+            </tr>
+            {% endfor %}
+    </table>
+    </div>
+{% endblock %}

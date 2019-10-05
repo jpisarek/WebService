@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.forms import ModelForm
+from django.urls import reverse
+
 
 
 
@@ -57,6 +60,9 @@ class Quiz(models.Model):
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     level = models.CharField(max_length=50)
+
+    def __str__(self):
+        return str(self.name)
 
 
 class Question(models.Model):

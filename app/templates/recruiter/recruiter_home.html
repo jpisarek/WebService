@@ -10,9 +10,9 @@
             <div class="nav">
                 <ol>
                     <li><a href="#">Strona główna</a></li>
-                    <li><a href="#">Quiz</a>
+                    <li><a href="{% url 'recruiter_home' %}">Quiz</a>
                         <ul>
-                            <li><a href="#">Dodaj</a></li>
+                            <li><a href="{% url 'recruiter_quiz_add' %}">Dodaj</a></li>
                             <li><a href="#">Przeglądaj</a></li>
                         </ul>
                     </li>
@@ -32,5 +32,17 @@
                 </ol>
             </div>
         </div>
+
+        <div>
+            {% block addquiz %}
+            {% endblock %}
+
+            {% block addquestion %}
+            {% endblock %}
+
+            {% block ranking %}
+            {% endblock %}
+        </div>
+
     </body>
 </html>

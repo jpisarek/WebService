@@ -1,0 +1,27 @@
+{% extends 'recruiter/recruiter_home.html' %}
+
+{% block addquiz %}
+    <div class="header">
+        <h3>Dodaj nowy quiz</h3>   
+    </div>
+
+    <div class="login">
+
+        <form method="POST" action="recruiter_quiz_add" id="form3">
+                {% csrf_token %}
+                {{ quiz_form.as_p }}
+
+                <script type="text/javascript">
+                    document.getElementById("quizButton").onclick = function () {
+                        location.href = "{% url 'recruiter_question_add' %}";
+                    };
+                </script>
+                
+        </form>
+
+    </div>
+        
+    <div class="buttons">
+        <button type="submit" value="Submit" form="form3" id="quizButton">Dodaj quiz</button>
+    </div>
+{% endblock %}

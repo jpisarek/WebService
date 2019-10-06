@@ -60,15 +60,14 @@ def recruiter_quiz_add(request):
     return render(request, 'recruiter/recruiter_quiz_add.html', {'quiz_form': quiz_form,},)
 
 def recruiter_question_add(request, quiz_id):
-
-    # if request.method == 'POST':
-    #     question_form = QuestionAddForm(request.POST)
-    #     if question_form.is_valid():
-    #         name = question_form.cleaned_data.get('name')
-    #         content = question_form.cleaned_data.get('content')
-    #         question_form.save()
-    #         return redirect('recruiter_question_add')
-    # else:
-    #     question_form = QuestionAddForm()
-    # return render(request, 'recruiter/recruiter_question_add.html', {'question_form': question_form,},)
-    return render(request, 'home.html')
+    quiz_ = Quiz.objects.get(id=quiz_id)
+    if request.method == 'POST':
+        question_form = QuestionAddForm(request.POST)
+        if question_form.is_valid():
+            name = question_form.cleaned_data.get('name')
+            content = question_form.cleaned_data.get('content')
+            question_form.save()
+            return redirect(quiz_)
+    else:
+        question_form = QuestionAddForm()
+    return render(request, 'recruiter/recruiter_question_add.html', {'question_form': question_form,},)

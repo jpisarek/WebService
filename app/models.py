@@ -64,6 +64,9 @@ class Quiz(models.Model):
     def __str__(self):
         return str(self.name)
 
+    def get_absolute_url(self):
+        return reverse('recruiter_question_add', args=[self.id])
+
 
 class Question(models.Model):
     name = models.ForeignKey(Quiz, on_delete=models.CASCADE)

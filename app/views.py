@@ -52,19 +52,23 @@ def recruiter_quiz_add(request):
             name = quiz_form.cleaned_data.get('name')
             level = quiz_form.cleaned_data.get('level')
             quiz_form.save()
-            return redirect('recruiter_question_add')
+            quiz_id = quiz_form.take_id()
+            print(quiz_id)
+            return redirect('/recruiter/quiz/%d/question/' % (quiz_id,))
     else:
         quiz_form = QuizAddForm()
     return render(request, 'recruiter/recruiter_quiz_add.html', {'quiz_form': quiz_form,},)
 
-def recruiter_question_add(request):
-    if request.method == 'POST':
-        question_form = QuestionAddForm(request.POST)
-        if question_form.is_valid():
-            name = question_form.cleaned_data.get('name')
-            content = question_form.cleaned_data.get('content')
-            question_form.save()
-            return redirect('recruiter_question_add')
-    else:
-        question_form = QuestionAddForm()
-    return render(request, 'recruiter/recruiter_question_add.html', {'question_form': question_form,},)
+def recruiter_question_add(request, quiz_id):
+
+    # if request.method == 'POST':
+    #     question_form = QuestionAddForm(request.POST)
+    #     if question_form.is_valid():
+    #         name = question_form.cleaned_data.get('name')
+    #         content = question_form.cleaned_data.get('content')
+    #         question_form.save()
+    #         return redirect('recruiter_question_add')
+    # else:
+    #     question_form = QuestionAddForm()
+    # return render(request, 'recruiter/recruiter_question_add.html', {'question_form': question_form,},)
+    return render(request, 'home.html')

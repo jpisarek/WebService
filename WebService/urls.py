@@ -28,6 +28,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^recruiter/home', views.recruiter_home, name='recruiter_home'),
     url(r'^recruiter/rank', views.recruiter_rank, name='recruiter_rank'),
-    url(r'^recruiter/quiz/add', views.recruiter_quiz_add, name='recruiter_quiz_add'),
-    url(r'^recruiter/quiz/question/', views.recruiter_question_add, name='recruiter_question_add'),
+    url(r'^recruiter/quiz/add/', views.recruiter_quiz_add, name='recruiter_quiz_add'),
+    url(r'^recruiter/quiz/(\d+)/question/', views.recruiter_question_add, name='recruiter_question_add'),
 ]

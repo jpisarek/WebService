@@ -15,6 +15,11 @@ class QuizAddForm(ModelForm):
         model = Quiz
         fields = ('organization', 'name', 'level')
 
+    def take_id(self):
+        for_quiz = self.instance.id
+        return for_quiz
+
+
 
 class QuestionAddForm(ModelForm):
     class Meta:

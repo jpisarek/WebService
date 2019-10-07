@@ -61,13 +61,13 @@ def recruiter_quiz_add(request):
 
 def recruiter_question_add(request, quiz_id):
     quiz_ = Quiz.objects.get(id=quiz_id)
+    print(quiz_id)
     if request.method == 'POST':
         question_form = QuestionAddForm(request.POST)
         if question_form.is_valid():
-            name = question_form.cleaned_data.get('name')
             content = question_form.cleaned_data.get('content')
-            question_form.save()
+            question_form.save(for_quiz=quiz_)
             return redirect(quiz_)
     else:
         question_form = QuestionAddForm()
-    return render(request, 'recruiter/recruiter_question_add.html', {'question_form': question_form,},)
+    return render(request, 'recruiter/recruiter_question_add.html', {'question_form': question_form, 'quiz_id': quiz_id},)

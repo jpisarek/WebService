@@ -71,3 +71,7 @@ def recruiter_question_add(request, quiz_id):
     else:
         question_form = QuestionAddForm()
     return render(request, 'recruiter/recruiter_question_add.html', {'question_form': question_form, 'quiz_id': quiz_id},)
+
+def recruiter_quiz_overview(request):
+    quizzes = Quiz.objects.all().order_by('id')
+    return render(request, 'recruiter/recruiter_quiz_overview.html', {'quizzes': quizzes})

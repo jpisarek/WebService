@@ -13,7 +13,7 @@
                     <li><a href="{% url 'recruiter_home' %}">Quiz</a>
                         <ul>
                             <li><a href="{% url 'recruiter_quiz_add' %}">Dodaj</a></li>
-                            <li><a href="#">Przeglądaj</a></li>
+                            <li><a href="{% url 'recruiter_quiz_overview' %}">Przeglądaj</a></li>
                         </ul>
                     </li>
                     <li><a href="#">Test</a>
@@ -38,6 +38,9 @@
             {% endblock %}
 
             {% block addquestion %}
+            {% endblock %}
+
+            {% block overviewquiz %}
             {% endblock %}
 
             {% block ranking %}

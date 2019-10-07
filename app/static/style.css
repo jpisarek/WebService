@@ -130,3 +130,14 @@ td, th
   	text-align: left;
   	padding: 8px;
 }
+
+.quizzes
+{
+	padding: 10px;
+}
+
+a.quizlink 
+{
+    color: #ffffff;
+    text-decoration: none;
+}

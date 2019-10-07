@@ -141,3 +141,8 @@ a.quizlink
     color: #ffffff;
     text-decoration: none;
 }
+
+a.quizlink:hover
+{
+	color: #428f42;
+}

@@ -41,6 +41,10 @@ class QuestionAddForm(ModelForm):
         self.instance.name = for_quiz
         return super().save()
 
+    def take_id(self):
+        for_question = self.instance.id
+        return for_question
+
 
 
 class AnswerAddForm(ModelForm):

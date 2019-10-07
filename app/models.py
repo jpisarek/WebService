@@ -72,6 +72,9 @@ class Question(models.Model):
     name = models.ForeignKey(Quiz, on_delete=models.CASCADE)
     content = models.CharField(max_length=500)
 
+    def __str__(self):
+        return str(self.name)
+
 
 class Answer(models.Model):
     content = models.CharField(max_length=300)

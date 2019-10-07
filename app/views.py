@@ -18,7 +18,7 @@ def register_page(request):
             candidate = candidate_form.save(commit=False)
             candidate.user = user
             candidate.save()            
-            return redirect('home.html')
+            return redirect('home_page')
     else:
         user_form = UserCreationForm()
         candidate_form = SignUpForm()

@@ -51,3 +51,7 @@ class AnswerAddForm(ModelForm):
     class Meta:
         model = Answer
         fields = ('content', 'question', 'is_boolean')
+
+    def save(self, for_question):
+        self.instance.question = for_question
+        return super().save()

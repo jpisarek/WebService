@@ -13,3 +13,21 @@ class RecruiterAdmin(admin.ModelAdmin):
     search_fields = ['user', 'first_name', 'last_name', 'email', 'organization']
     fields = ('user', 'first_name', 'last_name', 'email', 'organization')
     list_display = ('user', 'first_name', 'last_name', 'email', 'organization')
+
+@admin.register(Candidate)
+class CandidateAdmin(admin.ModelAdmin):
+    search_fields = ['user', 'first_name', 'last_name']
+    fields = ('user', 'first_name', 'last_name')
+    list_display = ('user', 'first_name', 'last_name')
+
+@admin.register(Quiz)
+class QuizAdmin(admin.ModelAdmin):
+    search_fields = ['organization', 'name', 'level']
+    fields = ('organization', 'name', 'level')
+    list_display = ('organization', 'name', 'level')
+
+@admin.register(Question)
+class QuestionAdmin(admin.ModelAdmin):
+    search_fields = ['name', 'content']
+    fields = ('name', 'content')
+    list_display = ('name', 'content')

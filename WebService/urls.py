@@ -31,4 +31,5 @@ urlpatterns = [
     url(r'^recruiter/quiz/add/', views.recruiter_quiz_add, name='recruiter_quiz_add'),
     url(r'^recruiter/quiz/(\d+)/question/', views.recruiter_question_add, name='recruiter_question_add'),
     url(r'^recruiter/quiz/overview/', views.recruiter_quiz_overview, name='recruiter_quiz_overview'),
+    url(r'^recruiter/question/(\d+)/answer/', views.recruiter_answer_add, name='recruiter_answer_add'),
 ]

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
 from app.forms import SignUpForm, QuizAddForm, QuestionAddForm, AnswerAddForm
-from app.models import Candidate, Quiz, Question
+from app.models import Candidate, Quiz, Question, Answer
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 
@@ -67,7 +67,8 @@ def recruiter_question_add(request, quiz_id):
         if question_form.is_valid():
             content = question_form.cleaned_data.get('content')
             question_form.save(for_quiz=quiz_)
-            return redirect(quiz_)
+            question_id = question_form.take_id()
+            return redirect('/recruiter/question/%d/answer/' % (question_id,))
     else:
         question_form = QuestionAddForm()
     return render(request, 'recruiter/recruiter_question_add.html', {'question_form': question_form, 'quiz_id': quiz_id},)
@@ -75,3 +76,6 @@ def recruiter_question_add(request, quiz_id):
 def recruiter_quiz_overview(request):
     quizzes = Quiz.objects.all().order_by('id')
     return render(request, 'recruiter/recruiter_quiz_overview.html', {'quizzes': quizzes})
+
+def recruiter_answer_add(request, question_id):
+    return render(request, 'recruiter/recruiter_answer_add.html')

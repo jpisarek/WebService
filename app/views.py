@@ -53,7 +53,6 @@ def recruiter_quiz_add(request):
             level = quiz_form.cleaned_data.get('level')
             quiz_form.save()
             quiz_id = quiz_form.take_id()
-            print(quiz_id)
             return redirect('/recruiter/quiz/%d/question/' % (quiz_id,))
     else:
         quiz_form = QuizAddForm()
@@ -61,7 +60,7 @@ def recruiter_quiz_add(request):
 
 def recruiter_question_add(request, quiz_id):
     quiz_ = Quiz.objects.get(id=quiz_id)
-    print(quiz_id)
+    quiz_name = quiz_.name
     if request.method == 'POST':
         question_form = QuestionAddForm(request.POST)
         if question_form.is_valid():
@@ -71,11 +70,23 @@ def recruiter_question_add(request, quiz_id):
             return redirect('/recruiter/question/%d/answer/' % (question_id,))
     else:
         question_form = QuestionAddForm()
-    return render(request, 'recruiter/recruiter_question_add.html', {'question_form': question_form, 'quiz_id': quiz_id},)
+    return render(request, 'recruiter/recruiter_question_add.html', {'question_form': question_form, 'quiz_name': quiz_name, 'quiz_id': quiz_id,})
 
 def recruiter_quiz_overview(request):
     quizzes = Quiz.objects.all().order_by('id')
     return render(request, 'recruiter/recruiter_quiz_overview.html', {'quizzes': quizzes})
 
 def recruiter_answer_add(request, question_id):
-    return render(request, 'recruiter/recruiter_answer_add.html')
+    question_ = Question.objects.get(id=question_id)
+    question_content = question_.content
+    if request.method == 'POST':
+        answer_form = AnswerAddForm(request.POST)
+        if answer_form.is_valid():
+            content = answer_form.cleaned_data.get('content')
+            is_boolean = answer_form.cleaned_data.get('is_boolean')
+            answer_form.save(for_question=question_)
+            question_iD = int(question_id)
+            return redirect('/recruiter/question/%d/answer/' % (question_iD,))
+    else:
+        answer_form = AnswerAddForm()
+    return render(request, 'recruiter/recruiter_answer_add.html', {'answer_form': answer_form, 'question_content': question_content})

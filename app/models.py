@@ -73,7 +73,7 @@ class Question(models.Model):
     content = models.CharField(max_length=500)
 
     def __str__(self):
-        return str(self.name)
+        return str(self.content)
 
 
 class Answer(models.Model):

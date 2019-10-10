@@ -50,7 +50,14 @@ class QuestionAddForm(ModelForm):
 class AnswerAddForm(ModelForm):
     class Meta:
         model = Answer
-        fields = ('content', 'question', 'is_boolean')
+        fields = ('content', 'is_boolean')
+        labels = {
+            'content': 'Odpowiedź',
+            'is_boolean': 'Poprawna'
+        }
+        widgets = {
+            'content': Textarea(attrs={'cols': 100, 'rows': 2}),
+        }
 
     def save(self, for_question):
         self.instance.question = for_question

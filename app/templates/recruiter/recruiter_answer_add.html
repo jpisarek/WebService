@@ -3,6 +3,29 @@
 {% block addanswer %}
     <div class="header">
         <h3>Dodaj odpowiedź</h3>   
+        <p>{{ question_content }}</p>
+    </div>
+
+    <div class="login">
+
+        <form method="POST" action="recruiter_answer_add" id="form5">
+                {% csrf_token %}
+                {{ answer_form.as_p }}
+                {{ answer_form.as_p }}
+                {{ answer_form.as_p }}
+
+                <script type="text/javascript">
+                    document.getElementById("answerButton").onclick = function () {
+                        location.href = window.location.href;      
+                    };
+                </script>
+                
+        </form>
+
+    </div>
+        
+    <div class="buttons">
+        <button type="submit" value="Submit" form="form5" id="answerButton">Dodaj odpowiedź</button>
     </div>
 
 {% endblock %}

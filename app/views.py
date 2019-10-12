@@ -39,7 +39,7 @@ def login_page(request):
             if log_user[0].is_staff == 1:
                 return redirect('recruiter_home')
             else:
-                return redirect('home_page')
+                return redirect('candidate_home')
         else:
             return render(request, 'registration/login.html', {'login_form': login_form})
     else:
@@ -117,3 +117,7 @@ def recruiter_answer_add(request, question_id):
     else:
         formset = AnswerFormSet()
     return render(request, 'recruiter/recruiter_answer_add.html', {'formset': formset, 'question_content': question_content})
+
+
+def candidate_home(request):
+    return render(request, 'candidate/candidate_home.html')

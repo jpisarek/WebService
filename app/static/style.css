@@ -21,16 +21,6 @@ body
 	text-align: center;
 }
 
-.nav
-{
-	width: 100%;
-	padding: 10px 0;
-	background-color: #008000;
-	text-align: center;
-	border-top: 1px solid #015801;
-	border-bottom: 1px solid #015801;
-}
-
 .buttons_home
 {
 	padding-top: 10px;
@@ -39,8 +29,8 @@ body
 
 .buttons
 {
-	float: right;
-	margin: 10px;
+	text-align: center;
+	padding: 25px;
 }
 
 .login
@@ -50,115 +40,11 @@ body
 	text-align: center;
 }
 
-ol
-{
-	padding: 0;
-	margin: 0;
-	list-style-type: none;
-	font-size: 18px;
-	height: 30px;
-	line-height: 200%;
-	display: inline-block;
-}
-
-ol a
-{
-	text-decoration: none;
-	color: #ffffff;
-	display: block;
-}
-
-ol > li
-{
-	float: left;
-	width: 150px;
-	height: 40px;
-	border-right: 1px dashed #015801;
-}
-
-ol > li:hover
-{
-	background-color: #428f42;
-}
-
-ol > li:hover > a
-{
-	color: #013801;
-
-}
-
-ol > li > ul
-{
-	list-style-type: none;
-	padding: 0;
-	margin: 0;
-	height: 40px;
-	display: none;
-}
-
-ol > li:hover > ul
-{
-	display: block;
-}
-
-ol >li > ul > li
-{
-	background-color: #428f42;
-	position: relative;
-	z-index: 100;
-	border-top: 1px dashed #015801;
-}
-
-ol > li > ul > li:hover
-{
-	background-color: #428f42;
-}
-
-ol > li > ul > li:hover > a
-{
-	color: #013801;
-}
-
-table
-{
-	width: 100%;
-	border-collapse: collapse;
-}
-
-td, th
-{
-	border: 1px solid #dddddd;
-  	text-align: left;
-  	padding: 8px;
-}
-
-.quizzes
-{
-	padding: 10px;
-}
-
-a.quizlink 
-{
-    color: #ffffff;
-    text-decoration: none;
-}
-
-a.quizlink:hover
-{
-	color: #428f42;
-}
-
 textarea 
 {
 	border: 5px solid #ffffff;
 	border-radius: 10px;
 	text-align: justify;
-}
-
-.oldquestions
-{
-	margin-left: 20px;
-	margin-top: 90px;
 }
 
 .helptext

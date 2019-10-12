@@ -4,52 +4,37 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'recruiter.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'candidate.css' %}">
         <link href="https://fonts.googleapis.com/css?family=Lato:400,900&amp;subset=latin-ext" rel="stylesheet"> 
     </head>
     <body>
         <div class="wrapper">
             <div class="nav">
                 <ol>
-                    <li><a href="{% url 'recruiter_home' %}">Strona główna</a></li>
-                    <li><a href="{% url 'recruiter_home' %}">Quiz</a>
+                    <li><a href="{% url 'candidate_home' %}">Strona główna</a></li>
+                    <li><a href="#">Quiz</a>
                         <ul>
-                            <li><a href="{% url 'recruiter_quiz_add' %}">Dodaj</a></li>
-                            <li><a href="{% url 'recruiter_quiz_overview' %}">Przeglądaj</a></li>
+                            <li><a href="#">Przeglądaj</a></li>
+                            <li><a href="#">Moje quizy</a></li>
                         </ul>
                     </li>
                     <li><a href="#">Test</a>
                         <ul>
-                            <li><a href="#">Dodaj</a></li>
                             <li><a href="#">Przeglądaj</a></li>
+                            <li><a href="#">Moje testy</a></li>
                         </ul>
                     </li>
                     <li><a href="#">Pozycja</a>
                         <ul>
-                            <li><a href="#">Dodaj</a></li>
                             <li><a href="#">Przeglądaj</a></li>
                         </ul>
                     </li>
-                    <li><a href="{% url 'recruiter_rank' %}">Ranking</a></li>
                 </ol>
             </div>
         </div>
 
         <div>
-            {% block addquiz %}
-            {% endblock %}
-
-            {% block addquestion %}
-            {% endblock %}
-
-            {% block addanswer %}
-            {% endblock %}
-
-            {% block overviewquiz %}
-            {% endblock %}
-
-            {% block ranking %}
-            {% endblock %}
+            <p style="text-align: center;">Zostałeś pomyślnie zalogowany do panelu kandydata!</p>
         </div>
 
     </body>

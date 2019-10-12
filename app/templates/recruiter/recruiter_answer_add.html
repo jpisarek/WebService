@@ -8,7 +8,7 @@
     
     <div class="login">
     
-        <form method="post" id="form5">
+        <form method="POST" id="form5">
             {% csrf_token %}
             {{ formset.management_form }}
             {% for form in formset %}

@@ -13,14 +13,20 @@
             <h1>Zaloguj się</h1>
         </div>
         <div class="login">
-            <form method="POST" name="login" id="form2">
+            <form method="POST" name="login_page" id="form2">
                 {% csrf_token %}
-                {{ form.as_p }}
+                {{ login_form.as_p }}
             </form>
         </div>
 
+        <script type="text/javascript">
+            document.getElementById("loginButton").onclick = function () {
+                location.href = window.location.href;      
+            };
+        </script>
+
         <div class="buttons">
-            <button type="submit" value="Submit" form="form2">Zaloguj się</button>
+            <button type="submit" value="Submit" form="form2" id=loginButton>Zaloguj się</button>
         </div>
     </body>
     

@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
-from app.forms import SignUpForm, QuizAddForm, QuestionAddForm, AnswerAddForm
-from app.models import Candidate, Quiz, Question, Answer
+from app.forms import SignUpForm, QuizAddForm, QuestionAddForm, AnswerAddForm, LoginForm
+from app.models import Candidate, Quiz, Question, Answer, User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.forms import formset_factory
@@ -25,15 +25,27 @@ def register_page(request):
         candidate_form = SignUpForm()
     return render(request, 'register.html', {'user_form': user_form, 'candidate_form': candidate_form})
 
-# def login_page(request):
-#     username = request.POST.get('username', '')
-#     password = request.POST.get('password', '')
-#     user = authenticate(request, username=username, password=password)
-#     if user is not None:
-#         login(request, user)
-#         return redirect('home.html')
-#     else:
-#         return redirect('login.html')
+def login_page(request):
+    users = User.objects.all().order_by('id')
+    if request.method == 'POST':
+        login_form = LoginForm(request.POST)
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        users_recruiters = User.objects.all().filter(is_staff=1)
+        if user is not None:
+            login(request, user)
+            log_user = User.objects.all().filter(username=username)            
+            if log_user[0].is_staff == 1:
+                return redirect('recruiter_home')
+            else:
+                return redirect('home_page')
+        else:
+            return render(request, 'registration/login.html', {'login_form': login_form})
+    else:
+        login_form = LoginForm()
+    return render(request, 'registration/login.html', {'login_form': login_form})
+
 
 @login_required
 def recruiter_home(request):

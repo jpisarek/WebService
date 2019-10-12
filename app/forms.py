@@ -62,3 +62,8 @@ class AnswerAddForm(ModelForm):
     def save(self, for_question):
         self.instance.question = for_question
         return super().save()
+
+class LoginForm(ModelForm):
+    class Meta:
+        model = User
+        fields = ('username', 'password')

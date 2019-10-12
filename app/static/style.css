@@ -3,6 +3,7 @@ body
 	background-color: #404040;
 	color: #ffffff;
 	font-size: 20px;
+	font-family: 'Lato', sans-serif;
 }
 
 .area
@@ -145,4 +146,17 @@ a.quizlink
 a.quizlink:hover
 {
 	color: #428f42;
+}
+
+textarea 
+{
+	border: 5px solid #ffffff;
+	border-radius: 10px;
+	text-align: justify;
+}
+
+.oldquestions
+{
+	margin-left: 20px;
+	margin-top: 90px;
 }

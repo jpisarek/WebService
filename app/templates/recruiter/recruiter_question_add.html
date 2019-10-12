@@ -25,4 +25,12 @@
     <div class="buttons">
         <button type="submit" value="Submit" form="form4" id="questionButton">Dodaj pytanie</button>
     </div>
+
+    <div class="oldquestions">
+        <p>Pytania znajdujące się w quizie</p>
+        {% for question in questionS %}                 
+            <p style="color: #428f42;">{{ question.content }}</p>
+        {% endfor %}
+    </div>
+
 {% endblock %}

@@ -50,7 +50,7 @@ class QuestionAddForm(ModelForm):
 class AnswerAddForm(ModelForm):
     class Meta:
         model = Answer
-        fields = ('content', 'is_boolean')
+        fields = ('content', 'is_boolean',)
         labels = {
             'content': 'Odpowiedź',
             'is_boolean': 'Poprawna'

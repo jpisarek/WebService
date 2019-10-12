@@ -31,3 +31,9 @@ class QuestionAdmin(admin.ModelAdmin):
     search_fields = ['name', 'content']
     fields = ('name', 'content')
     list_display = ('name', 'content')
+
+@admin.register(Answer)
+class AnswerAdmin(admin.ModelAdmin):
+    search_fields = ['content', 'question', 'is_boolean']
+    fields = ('content', 'question', 'is_boolean')
+    list_display = ('content', 'question', 'is_boolean')

@@ -2,30 +2,32 @@
 
 {% block addanswer %}
     <div class="header">
-        <h3>Dodaj odpowiedź</h3>   
+        <h3>Dodaj odpowiedź</h3>
         <p>{{ question_content }}</p>
     </div>
-
+    
     <div class="login">
-
-        <form method="POST" action="recruiter_answer_add" id="form5">
-                {% csrf_token %}
-                {{ answer_form.as_p }}
-                {{ answer_form.as_p }}
-                {{ answer_form.as_p }}
-
-                <script type="text/javascript">
-                    document.getElementById("answerButton").onclick = function () {
-                        location.href = window.location.href;      
-                    };
-                </script>
-                
+    
+        <form method="post" id="form5">
+            {% csrf_token %}
+            {{ formset.management_form }}
+            {% for form in formset %}
+            <p>{{ form }}</p>
+            {% endfor %}
         </form>
-
-    </div>
-        
+    
+    </div>    
+    
+    
+    <script type="text/javascript">
+        submitForms = function () {
+            document.getElementById("form5").submit();
+        }
+    </script>
+    
+    
     <div class="buttons">
-        <button type="submit" value="Submit" form="form5" id="answerButton">Dodaj odpowiedź</button>
+        <input type="button" value="Dodaj odpowiedź" onclick="submitForms()" />
     </div>
 
 {% endblock %}

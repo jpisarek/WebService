@@ -5,6 +5,7 @@ from app.forms import SignUpForm, QuizAddForm, QuestionAddForm, AnswerAddForm
 from app.models import Candidate, Quiz, Question, Answer
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.forms import formset_factory
 
 def home_page(request):
     return render(request, 'home.html')
@@ -61,6 +62,7 @@ def recruiter_quiz_add(request):
 def recruiter_question_add(request, quiz_id):
     quiz_ = Quiz.objects.get(id=quiz_id)
     quiz_name = quiz_.name
+    questionS = Question.objects.all().filter(name_id=quiz_id)
     if request.method == 'POST':
         question_form = QuestionAddForm(request.POST)
         if question_form.is_valid():
@@ -70,7 +72,7 @@ def recruiter_question_add(request, quiz_id):
             return redirect('/recruiter/question/%d/answer/' % (question_id,))
     else:
         question_form = QuestionAddForm()
-    return render(request, 'recruiter/recruiter_question_add.html', {'question_form': question_form, 'quiz_name': quiz_name, 'quiz_id': quiz_id,})
+    return render(request, 'recruiter/recruiter_question_add.html', {'question_form': question_form, 'quiz_name': quiz_name, 'quiz_id': quiz_id, 'questionS': questionS})
 
 def recruiter_quiz_overview(request):
     quizzes = Quiz.objects.all().order_by('id')
@@ -79,14 +81,27 @@ def recruiter_quiz_overview(request):
 def recruiter_answer_add(request, question_id):
     question_ = Question.objects.get(id=question_id)
     question_content = question_.content
+    quiz_id = question_.name_id
+    AnswerFormSet = formset_factory(AnswerAddForm, min_num=3, max_num=3)
     if request.method == 'POST':
-        answer_form = AnswerAddForm(request.POST)
-        if answer_form.is_valid():
-            content = answer_form.cleaned_data.get('content')
-            is_boolean = answer_form.cleaned_data.get('is_boolean')
-            answer_form.save(for_question=question_)
+        formset = AnswerFormSet(request.POST, request.FILES)
+  
+        if formset[0].is_valid():
+            content = formset[0].cleaned_data.get('content')
+            is_boolean = formset[0].cleaned_data.get('is_boolean')
+            formset[0].save(for_question=question_)
+
+        if formset[1].is_valid():
+            content = formset[1].cleaned_data.get('content')
+            is_boolean = formset[1].cleaned_data.get('is_boolean')
+            formset[1].save(for_question=question_)
+
+        if formset[2].is_valid():
+            content = formset[2].cleaned_data.get('content')
+            is_boolean = formset[2].cleaned_data.get('is_boolean')
+            formset[2].save(for_question=question_)
             question_iD = int(question_id)
-            return redirect('/recruiter/question/%d/answer/' % (question_iD,))
+            return redirect('/recruiter/quiz/%d/question/' % (quiz_id,))
     else:
-        answer_form = AnswerAddForm()
-    return render(request, 'recruiter/recruiter_answer_add.html', {'answer_form': answer_form, 'question_content': question_content})
+        formset = AnswerFormSet()
+    return render(request, 'recruiter/recruiter_answer_add.html', {'formset': formset, 'question_content': question_content})

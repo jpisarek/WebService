@@ -8,7 +8,7 @@
     <div class="overview">
             {% for quiz in quizzes %}
                 <div class="quizzes">
-                    <a class="quizlink" href="{% url 'recruiter_question_add' quiz.id %}">{{ quiz.id }} : {{ quiz.name }}</a>
+                    <a class="quizlink" href="{% url 'recruiter_question_add' quiz.id %}">{{ quiz.name }}</a>
                 </div>
             {% endfor %}
     </div>

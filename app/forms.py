@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from app.models import Candidate, Quiz, Question, Answer
-from django.forms import ModelForm, Textarea
+from django.forms import ModelForm, Textarea, TextInput
 
 class SignUpForm(ModelForm):
     class Meta:
@@ -66,3 +66,7 @@ class LoginForm(ModelForm):
     class Meta:
         model = User
         fields = ('username', 'password')
+
+        widgets = {
+            'password': TextInput(attrs={'type': 'password'})
+        }

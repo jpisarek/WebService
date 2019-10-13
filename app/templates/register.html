@@ -14,7 +14,17 @@
         </div>
         <div class="login">
             <form method="POST" action="register_page" id="form1">
-                {{ user_form.as_p }}
+                
+                {% for field in user_form %}
+                <p>
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% for error in field.errors %}
+                    <small style="color: grey; display:block; margin-top: 7px;">{{ error }}</small>
+                    {% endfor %}
+                </p>
+                {% endfor %}
+        
                 {{ candidate_form.as_p }}
                 {% csrf_token %}
             </form>

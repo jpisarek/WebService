@@ -12,9 +12,9 @@
             <div class="nav">
                 <ol>
                     <li><a href="{% url 'candidate_home' %}">Strona główna</a></li>
-                    <li><a href="#">Quiz</a>
+                    <li><a href="{% url 'candidate_home' %}">Quiz</a>
                         <ul>
-                            <li><a href="#">Przeglądaj</a></li>
+                            <li><a href="{% url 'candidate_quiz_overview' %}">Przeglądaj</a></li>
                             <li><a href="#">Moje quizy</a></li>
                         </ul>
                     </li>
@@ -34,7 +34,11 @@
         </div>
 
         <div>
-            <p style="text-align: center;">Zostałeś pomyślnie zalogowany do panelu kandydata!</p>
+            {% block overviewquiz %}
+            {% endblock %}
+
+            {% block startquiz %}
+            {% endblock %}
         </div>
 
     </body>

@@ -76,3 +76,43 @@ ol > li > ul > li:hover > a
 {
 	color: #052230;
 }
+
+.overview
+{
+	background-color: rgba(0,0,0,0.3);
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.quizzes
+{
+	padding: 10px;
+	text-align: center;
+	background-color: rgba(0,0,0,0.2);
+	margin: 7px;
+	border-radius: 5px;
+}
+
+a.quizlink 
+{
+    color: #ffffff;
+	text-decoration: none;
+}
+
+a.quizlink:hover
+{
+	color: #1d87b8;
+}
+
+.oldquestions
+{
+    margin-left: 20px;
+    margin-top: 20px;
+    background-color: rgba(0,0,0, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}

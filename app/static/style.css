@@ -51,3 +51,29 @@ textarea
 {
 	display: none;
 }
+
+#form1 > p > input 
+{	
+	padding: 3px;
+	align-items: center;
+}
+
+#form1 > p > label 
+{
+	padding: 3px;
+	justify-content: center;
+	display: flex;
+}
+
+#form2 > p > input 
+{	
+	padding: 3px;
+	align-items: center;
+}
+
+#form2 > p > label 
+{
+	padding: 3px;
+	justify-content: center;
+	display: flex;
+}

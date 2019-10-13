@@ -15,7 +15,15 @@
         <div class="login">
             <form method="POST" name="login_page" id="form2">
                 {% csrf_token %}
-                {{ login_form.as_p }}
+                {% for field in login_form %}
+                <p>
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% for error in field.errors %}
+                    <small style="color: grey; display:block; margin-top: 7px;">{{ error }}</small>
+                    {% endfor %}
+                </p>
+                {% endfor %}
             </form>
         </div>
 

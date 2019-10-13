@@ -25,7 +25,6 @@ class QuizAddForm(ModelForm):
         return for_quiz
 
 
-
 class QuestionAddForm(ModelForm):
     class Meta:
         model = Question
@@ -46,7 +45,6 @@ class QuestionAddForm(ModelForm):
         return for_question
 
 
-
 class AnswerAddForm(ModelForm):
     class Meta:
         model = Answer
@@ -62,6 +60,7 @@ class AnswerAddForm(ModelForm):
     def save(self, for_question):
         self.instance.question = for_question
         return super().save()
+
 
 class LoginForm(ModelForm):
     class Meta:

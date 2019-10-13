@@ -83,11 +83,20 @@ table
 	border-collapse: collapse;
 }
 
-td, th
+td
 {
-	border: 1px solid #dddddd;
+	border: 1px solid rgba(0,0,0,0.3);
   	text-align: left;
-  	padding: 8px;
+	  padding: 8px;
+	  background-color: rgba(0,0,0,0.1);
+}
+
+th
+{
+	border: 1px solid rgba(0,0,0,0.3);
+  	text-align: left;
+	padding: 8px;
+	background-color: rgba(0,0,0,0.3);
 }
 
 .overview
@@ -130,13 +139,13 @@ a.quizlink:hover
     margin-right: auto;
 }
 
-#form4 > p > label:first-child {
+#form4 > p > label:first-child 
+{
 	display: none;
-
 }
 
-#form3 > p > label {
+#form3 > p > label 
+{
 	display: block;
 	padding: 3px;
-
 }

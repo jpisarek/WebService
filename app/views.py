@@ -10,6 +10,7 @@ from django.forms import formset_factory
 def home_page(request):
     return render(request, 'home.html')
 
+
 def register_page(request):
     if request.method == 'POST':
         user_form = UserCreationForm(request.POST)
@@ -24,6 +25,7 @@ def register_page(request):
         user_form = UserCreationForm()
         candidate_form = SignUpForm()
     return render(request, 'register.html', {'user_form': user_form, 'candidate_form': candidate_form})
+
 
 def login_page(request):
     users = User.objects.all().order_by('id')
@@ -51,6 +53,7 @@ def login_page(request):
 def recruiter_home(request):
     return render(request, 'recruiter/recruiter_home.html')
 
+
 @login_required
 def recruiter_rank(request):
     candidates = Candidate.objects.all().order_by('id')
@@ -71,6 +74,7 @@ def recruiter_quiz_add(request):
         quiz_form = QuizAddForm()
     return render(request, 'recruiter/recruiter_quiz_add.html', {'quiz_form': quiz_form,},)
 
+
 def recruiter_question_add(request, quiz_id):
     quiz_ = Quiz.objects.get(id=quiz_id)
     quiz_name = quiz_.name
@@ -86,9 +90,11 @@ def recruiter_question_add(request, quiz_id):
         question_form = QuestionAddForm()
     return render(request, 'recruiter/recruiter_question_add.html', {'question_form': question_form, 'quiz_name': quiz_name, 'quiz_id': quiz_id, 'questionS': questionS})
 
+
 def recruiter_quiz_overview(request):
     quizzes = Quiz.objects.all().order_by('id')
     return render(request, 'recruiter/recruiter_quiz_overview.html', {'quizzes': quizzes})
+
 
 def recruiter_answer_add(request, question_id):
     question_ = Question.objects.get(id=question_id)
@@ -121,3 +127,22 @@ def recruiter_answer_add(request, question_id):
 
 def candidate_home(request):
     return render(request, 'candidate/candidate_home.html')
+
+
+def candidate_quiz_overview(request):
+    quizzes = Quiz.objects.all().order_by('id')
+    return render(request, 'candidate/candidate_quiz_overview.html', {'quizzes': quizzes})
+
+
+def candidate_quiz_start(request, quiz_id):
+    quiz_ = Quiz.objects.get(id=quiz_id)
+    quiz_name = quiz_.name
+    questions = Question.objects.all().filter(name_id=quiz_id)
+    for q in range(len(questions)):
+        questions_id = questions[q].id
+        answers = Answer.objects.all().filter(question_id=questions_id)
+        for answer in answers:
+            answer.is_clicked = True
+        questions[q].answers = answers
+    
+    return render(request, 'candidate/candidate_quiz_start.html', {'quiz_name': quiz_name, 'quiz_id': quiz_id, 'questions': questions})

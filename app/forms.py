@@ -13,9 +13,8 @@ class SignUpForm(ModelForm):
 class QuizAddForm(ModelForm):
     class Meta:
         model = Quiz
-        fields = ('organization', 'name', 'job_position')
+        fields = ('name', 'job_position')
         labels = {
-            'organization': 'Organizacja',
             'name': 'Tytuł quizu',
             'job_position': 'Pozycja'
         }
@@ -23,6 +22,10 @@ class QuizAddForm(ModelForm):
     def take_id(self):
         for_quiz = self.instance.id
         return for_quiz
+
+    def save(self, for_organization):
+        self.instance.organization_id = for_organization
+        return super().save()
 
 
 class QuestionAddForm(ModelForm):

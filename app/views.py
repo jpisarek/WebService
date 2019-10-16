@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
 from app.forms import SignUpForm, QuizAddForm, QuestionAddForm, AnswerAddForm, LoginForm, JobPostingAddForm
-from app.models import Candidate, Quiz, Question, Answer, User
+from app.models import Organization, Recruiter, Candidate, Quiz, Question, Answer, User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.forms import formset_factory
@@ -61,13 +61,17 @@ def recruiter_rank(request):
 
 
 def recruiter_quiz_add(request):
+    if request.user.is_authenticated:
+        user = User.objects.get(username=request.user)
+        recruiter = Recruiter.objects.get(user_id=user.id)
+        organization = Organization.objects.get(id=recruiter.organization_id)
+
     if request.method == 'POST':
         quiz_form = QuizAddForm(request.POST)
         if quiz_form.is_valid():
-            organization = quiz_form.cleaned_data.get('organization')
             name = quiz_form.cleaned_data.get('name')
             job_position = quiz_form.cleaned_data.get('job_position')
-            quiz_form.save()
+            quiz_form.save(for_organization=organization.id)
             quiz_id = quiz_form.take_id()
             return redirect('/recruiter/quiz/%d/question/' % (quiz_id,))
     else:

@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from app.models import Candidate, Quiz, Question, Answer
+from app.models import Candidate, Quiz, Question, Answer, JobPosting
 from django.forms import ModelForm, Textarea, TextInput
 
 class SignUpForm(ModelForm):
@@ -60,6 +60,16 @@ class AnswerAddForm(ModelForm):
     def save(self, for_question):
         self.instance.question = for_question
         return super().save()
+
+
+class JobPostingAddForm(ModelForm):
+    class Meta:
+        model = JobPosting
+        fields = ('organization', 'job_position',)
+        labels = {
+            'organization': 'Organizacja',
+            'job_position': 'Pozycja'
+        }
 
 
 class LoginForm(ModelForm):

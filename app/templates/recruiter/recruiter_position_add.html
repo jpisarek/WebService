@@ -1,0 +1,27 @@
+{% extends 'recruiter/recruiter_home.html' %}
+
+{% block addposition %}
+    <div class="header">
+        <h3>Dodaj nową pozycję</h3>   
+    </div>
+
+    <div class="login">
+
+        <form method="POST" action="recruiter_position_add" id="form6">
+                {% csrf_token %}
+                {{ position_form.as_p }}
+
+                <script type="text/javascript">
+                    document.getElementById("positionButton").onclick = function () {
+                        location.href = "{% url 'recruiter_position_add' %}";                   
+                    };
+                </script>
+                
+        </form>
+
+    </div>
+        
+    <div class="buttons">
+        <button type="submit" value="Submit" form="form6" id="positionButton">Dodaj pozycję</button>
+    </div>
+{% endblock %}

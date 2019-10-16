@@ -48,7 +48,7 @@ class Application(models.Model):
 class Quiz(models.Model):
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
-    job_position = models.ForeignKey(JobPosting, on_delete=models.CASCADE, default="0")
+    job_position = models.ForeignKey(JobPosting, on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.name)

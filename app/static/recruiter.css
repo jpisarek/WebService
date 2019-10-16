@@ -149,3 +149,10 @@ a.quizlink:hover
 	display: block;
 	padding: 3px;
 }
+
+#form6 > p > label 
+{
+	display: block;
+	padding: 3px;
+}
+

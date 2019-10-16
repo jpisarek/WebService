@@ -18,15 +18,9 @@
                             <li><a href="{% url 'recruiter_quiz_overview' %}">Przeglądaj</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Test</a>
+                    <li><a href="{% url 'recruiter_home' %}">Pozycja</a>
                         <ul>
-                            <li><a href="#">Dodaj</a></li>
-                            <li><a href="#">Przeglądaj</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Pozycja</a>
-                        <ul>
-                            <li><a href="#">Dodaj</a></li>
+                            <li><a href="{% url 'recruiter_position_add' %}">Dodaj</a></li>
                             <li><a href="#">Przeglądaj</a></li>
                         </ul>
                     </li>
@@ -46,6 +40,9 @@
             {% endblock %}
 
             {% block overviewquiz %}
+            {% endblock %}
+
+            {% block addposition %}
             {% endblock %}
 
             {% block ranking %}

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
-from app.forms import SignUpForm, QuizAddForm, QuestionAddForm, AnswerAddForm, LoginForm
+from app.forms import SignUpForm, QuizAddForm, QuestionAddForm, AnswerAddForm, LoginForm, JobPostingAddForm
 from app.models import Candidate, Quiz, Question, Answer, User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -123,6 +123,19 @@ def recruiter_answer_add(request, question_id):
     else:
         formset = AnswerFormSet()
     return render(request, 'recruiter/recruiter_answer_add.html', {'formset': formset, 'question_content': question_content})
+
+
+def recruiter_position_add(request):
+    if request.method == 'POST':
+        position_form = JobPostingAddForm(request.POST)
+        if position_form.is_valid():
+            organization = position_form.cleaned_data.get('organization')
+            job_position = position_form.cleaned_data.get('job_position')
+            position_form.save()
+            return redirect('/recruiter/position/add/')
+    else:
+        position_form = JobPostingAddForm()
+    return render(request, 'recruiter/recruiter_position_add.html', {'position_form': position_form,},)
 
 
 def candidate_home(request):

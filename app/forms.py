@@ -37,7 +37,7 @@ class QuestionAddForm(ModelForm):
         }
 
     def save(self, for_quiz):
-        self.instance.name = for_quiz
+        self.instance.quiz = for_quiz
         return super().save()
 
     def take_id(self):

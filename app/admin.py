@@ -34,9 +34,9 @@ class QuizAdmin(admin.ModelAdmin):
 
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
-    search_fields = ['name', 'content']
-    fields = ('name', 'content')
-    list_display = ('name', 'content')
+    search_fields = ['quiz', 'content']
+    fields = ('quiz', 'content')
+    list_display = ('quiz', 'content')
 
 @admin.register(Answer)
 class AnswerAdmin(admin.ModelAdmin):

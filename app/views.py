@@ -78,7 +78,7 @@ def recruiter_quiz_add(request):
 def recruiter_question_add(request, quiz_id):
     quiz_ = Quiz.objects.get(id=quiz_id)
     quiz_name = quiz_.name
-    questionS = Question.objects.all().filter(name_id=quiz_id)
+    questionS = Question.objects.all().filter(quiz_id=quiz_id)
     if request.method == 'POST':
         question_form = QuestionAddForm(request.POST)
         if question_form.is_valid():
@@ -99,7 +99,7 @@ def recruiter_quiz_overview(request):
 def recruiter_answer_add(request, question_id):
     question_ = Question.objects.get(id=question_id)
     question_content = question_.content
-    quiz_id = question_.name_id
+    quiz_id = question_.quiz_id
     AnswerFormSet = formset_factory(AnswerAddForm, min_num=3, max_num=3)
     if request.method == 'POST':
         formset = AnswerFormSet(request.POST, request.FILES)
@@ -137,7 +137,7 @@ def candidate_quiz_overview(request):
 def candidate_quiz_start(request, quiz_id):
     quiz_ = Quiz.objects.get(id=quiz_id)
     quiz_name = quiz_.name
-    questions = Question.objects.all().filter(name_id=quiz_id)
+    questions = Question.objects.all().filter(quiz_id=quiz_id)
     for q in range(len(questions)):
         questions_id = questions[q].id
         answers = Answer.objects.all().filter(question_id=questions_id)

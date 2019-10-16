@@ -19,7 +19,6 @@ class Recruiter(models.Model):
     last_name = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
-    is_superadmin = models.BooleanField(default=False)
       
 
 class Candidate(models.Model):
@@ -59,7 +58,7 @@ class Quiz(models.Model):
 
 
 class Question(models.Model):
-    name = models.ForeignKey(Quiz, on_delete=models.CASCADE)
+    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
     content = models.CharField(max_length=500)
 
     def __str__(self):

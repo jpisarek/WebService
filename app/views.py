@@ -66,7 +66,7 @@ def recruiter_quiz_add(request):
         if quiz_form.is_valid():
             organization = quiz_form.cleaned_data.get('organization')
             name = quiz_form.cleaned_data.get('name')
-            level = quiz_form.cleaned_data.get('level')
+            job_position = quiz_form.cleaned_data.get('job_position')
             quiz_form.save()
             quiz_id = quiz_form.take_id()
             return redirect('/recruiter/quiz/%d/question/' % (quiz_id,))

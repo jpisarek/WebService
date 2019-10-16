@@ -31,35 +31,25 @@ class Candidate(models.Model):
 
 
 class JobPosting(models.Model):
-    job_possition = models.CharField(max_length=30)
-    recruiter = models.ForeignKey(Recruiter, on_delete=models.CASCADE)
+    job_position = models.CharField(max_length=30)
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.job_position)
 
 
 class Application(models.Model):
-    job_possition = models.ForeignKey(JobPosting, on_delete=models.CASCADE)
+    job_position = models.ForeignKey(JobPosting, on_delete=models.CASCADE)
     candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE)
     description = models.CharField(max_length=200)
     attachment = models.FileField(upload_to='files/')
     status = models.CharField(max_length=50)
 
 
-class Task(models.Model):
-    organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
-    name = models.CharField(max_length=50)
-    description = models.CharField(max_length=200)
-
-
-class ApplicationTask(models.Model):
-    application = models.ForeignKey(Application, on_delete=models.CASCADE)
-    task = models.ForeignKey(Task, on_delete=models.CASCADE)
-    score = models.IntegerField()
-
-
 class Quiz(models.Model):
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
-    level = models.CharField(max_length=50)
+    job_position = models.ForeignKey(JobPosting, on_delete=models.CASCADE, default="0")
 
     def __str__(self):
         return str(self.name)

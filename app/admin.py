@@ -20,11 +20,17 @@ class CandidateAdmin(admin.ModelAdmin):
     fields = ('user', 'first_name', 'last_name')
     list_display = ('user', 'first_name', 'last_name')
 
+@admin.register(JobPosting)
+class JobPostingAdmin(admin.ModelAdmin):
+    search_fields = ['job_position', 'organization']
+    fields = ('job_position', 'organization')
+    list_display = ('job_position', 'organization')
+
 @admin.register(Quiz)
 class QuizAdmin(admin.ModelAdmin):
-    search_fields = ['organization', 'name', 'level']
-    fields = ('organization', 'name', 'level')
-    list_display = ('organization', 'name', 'level')
+    search_fields = ['organization', 'name', 'job_position']
+    fields = ('organization', 'name', 'job_position')
+    list_display = ('organization', 'name', 'job_position')
 
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):

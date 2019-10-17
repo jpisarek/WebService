@@ -31,10 +31,12 @@ urlpatterns = [
     url(r'^recruiter/quiz/(\d+)/question/', views.recruiter_question_add, name='recruiter_question_add'),
     url(r'^recruiter/quiz/overview/', views.recruiter_quiz_overview, name='recruiter_quiz_overview'),
     url(r'^recruiter/question/(\d+)/answer/', views.recruiter_answer_add, name='recruiter_answer_add'),
-    url(r'^candidate/home', views.candidate_home, name='candidate_home'),
-    url(r'^candidate/quiz/overview/', views.candidate_quiz_overview, name='candidate_quiz_overview'),
-    url(r'^candidate/quiz/(\d+)/', views.candidate_quiz_start, name='candidate_quiz_start'),
     url(r'^recruiter/position/add/', views.recruiter_position_add, name='recruiter_position_add'),
     url(r'^recruiter/position/overview/', views.recruiter_position_overview, name='recruiter_position_overview'),
     url(r'^recruiter/position/(\d+)/quiz/', views.recruiter_position_quiz, name='recruiter_position_quiz'),
+
+    url(r'^candidate/home', views.candidate_home, name='candidate_home'),
+    url(r'^candidate/quiz/overview/', views.candidate_quiz_overview, name='candidate_quiz_overview'),
+    url(r'^candidate/quiz/(\d+)/', views.candidate_quiz_start, name='candidate_quiz_start'),
+    url(r'^candidate/position/overview/', views.candidate_position_overview, name='candidate_position_overview'),
 ]

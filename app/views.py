@@ -197,3 +197,9 @@ def candidate_quiz_start(request, quiz_id):
         questions[q].answers = answers
     
     return render(request, 'candidate/candidate_quiz_start.html', {'quiz_name': quiz_name, 'quiz_id': quiz_id, 'questions': questions})
+
+
+@login_required(login_url='/login')
+def candidate_position_overview(request):
+    positions = JobPosting.objects.all().order_by('id')
+    return render(request, 'candidate/candidate_position_overview.html', {'positions': positions})

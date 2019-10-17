@@ -18,9 +18,9 @@
                             <li><a href="#">Moje quizy</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Pozycja</a>
+                    <li><a href="{% url 'candidate_home' %}">Pozycja</a>
                         <ul>
-                            <li><a href="#">Przeglądaj</a></li>
+                            <li><a href="{% url 'candidate_position_overview' %}">Przeglądaj</a></li>
                         </ul>
                     </li>
                 </ol>
@@ -32,6 +32,9 @@
             {% endblock %}
 
             {% block startquiz %}
+            {% endblock %}
+
+            {% block overviewposition %}
             {% endblock %}
         </div>
 

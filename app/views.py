@@ -135,12 +135,16 @@ def recruiter_answer_add(request, question_id):
 
 @login_required(login_url='/login')
 def recruiter_position_add(request):
+    if request.user.is_authenticated:
+        user = User.objects.get(username=request.user)
+        recruiter = Recruiter.objects.get(user_id=user.id)
+        organization = Organization.objects.get(id=recruiter.organization_id)
+
     if request.method == 'POST':
         position_form = JobPostingAddForm(request.POST)
         if position_form.is_valid():
-            organization = position_form.cleaned_data.get('organization')
             job_position = position_form.cleaned_data.get('job_position')
-            position_form.save()
+            position_form.save(for_organization=organization.id)
             return redirect('/recruiter/position/add/')
     else:
         position_form = JobPostingAddForm()

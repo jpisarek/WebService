@@ -186,8 +186,7 @@ button[type=submit]:hover
 
 #form3 > p > input[type=text],
 #form3 > p > select,
-#form6 > p > input[type=text],
-#form6 > p > select
+#form6 > p > input[type=text]
 {
 	width: 300px;
 	background-color: #efefef;
@@ -242,4 +241,5 @@ button[type=submit]:hover
 	box-sizing: border-box;
 	outline: none;
 	margin-top: 10px;
+	text-align: justify;
 }

@@ -62,17 +62,14 @@ def recruiter_rank(request):
 
 @login_required(login_url='/login')
 def recruiter_quiz_add(request):
-    if request.user.is_authenticated:
-        user = User.objects.get(username=request.user)
-        recruiter = Recruiter.objects.get(user_id=user.id)
-        organization = Organization.objects.get(id=recruiter.organization_id)
+    organization = take_organization(request)
 
     if request.method == 'POST':
         quiz_form = QuizAddForm(request.POST)
         if quiz_form.is_valid():
             name = quiz_form.cleaned_data.get('name')
             job_position = quiz_form.cleaned_data.get('job_position')
-            quiz_form.save(for_organization=organization.id)
+            quiz_form.save(for_organization=organization)
             quiz_id = quiz_form.take_id()
             return redirect('/recruiter/quiz/%d/question/' % (quiz_id,))
     else:
@@ -135,17 +132,14 @@ def recruiter_answer_add(request, question_id):
 
 @login_required(login_url='/login')
 def recruiter_position_add(request):
-    if request.user.is_authenticated:
-        user = User.objects.get(username=request.user)
-        recruiter = Recruiter.objects.get(user_id=user.id)
-        organization = Organization.objects.get(id=recruiter.organization_id)
+    organization = take_organization(request)
 
     if request.method == 'POST':
         position_form = JobPostingAddForm(request.POST)
         if position_form.is_valid():
             job_position = position_form.cleaned_data.get('job_position')
             description = position_form.cleaned_data.get('description')
-            position_form.save(for_organization=organization.id)
+            position_form.save(for_organization=organization)
             return redirect('/recruiter/position/add/')
     else:
         position_form = JobPostingAddForm()
@@ -176,3 +170,11 @@ def candidate_quiz_start(request, quiz_id):
         questions[q].answers = answers
     
     return render(request, 'candidate/candidate_quiz_start.html', {'quiz_name': quiz_name, 'quiz_id': quiz_id, 'questions': questions})
+
+
+def take_organization(request):
+    if request.user.is_authenticated:
+        user = User.objects.get(username=request.user)
+        recruiter = Recruiter.objects.get(user_id=user.id)
+        organization = Organization.objects.get(id=recruiter.organization_id)
+        return(organization.id)

@@ -22,9 +22,9 @@ class CandidateAdmin(admin.ModelAdmin):
 
 @admin.register(JobPosting)
 class JobPostingAdmin(admin.ModelAdmin):
-    search_fields = ['job_position', 'organization']
-    fields = ('job_position', 'organization')
-    list_display = ('job_position', 'organization')
+    search_fields = ['job_position', 'description', 'organization']
+    fields = ('job_position', 'description', 'organization')
+    list_display = ('job_position', 'description', 'organization')
 
 @admin.register(Quiz)
 class QuizAdmin(admin.ModelAdmin):

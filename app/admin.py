@@ -43,3 +43,9 @@ class AnswerAdmin(admin.ModelAdmin):
     search_fields = ['content', 'question', 'is_boolean']
     fields = ('content', 'question', 'is_boolean')
     list_display = ('content', 'question', 'is_boolean')
+
+@admin.register(Application)
+class ApplicationAdmin(admin.ModelAdmin):
+    search_fields = ['description', 'attachment', 'score', 'status']
+    fields = ('description', 'attachment', 'score')
+    list_display = ('description', 'attachment', 'score', 'status')

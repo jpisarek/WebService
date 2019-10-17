@@ -139,8 +139,19 @@ button[type=submit]:hover
 	background-color: rgba(0,0,0, 0.5);
 }
 
-#form1 > p > label 
+#form1 > p > label[for=id_attachment]
 {
 	display: block;
+	margin-top: 40px;
 	padding: 3px;
+}
+
+#form1 > ul:errorlis
+{
+	display: none;
+}
+
+#form1 > p > input[id=id_attachment]
+{
+	margin-top: 10px;
 }

@@ -132,3 +132,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/recruiter/home'
 STATIC_ROOT = os.path.join(BASE_DIR,'/static/')
+
+MEDIA_URL = '/files/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'files')

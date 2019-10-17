@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
 from app.forms import SignUpForm, QuizAddForm, QuestionAddForm, AnswerAddForm, LoginForm, JobPostingAddForm, ApplicationAddForm
-from app.models import Organization, Recruiter, Candidate, Quiz, Question, Answer, JobPosting, User
+from app.models import Organization, Recruiter, Candidate, Quiz, Question, Answer, JobPosting, User, Application
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.forms import formset_factory
@@ -230,7 +230,7 @@ def candidate_add_application(request, quiz_id):
         application_form = ApplicationAddForm(request.POST, request.FILES)
         if application_form.is_valid():
             description = application_form.cleaned_data.get('description')
-            # attachment = application_form.cleaned_data.get(request.FILES['attachment'])
+            attachment = application_form.cleaned_data.get('attachment')
             application_form.save(for_candidate, quiz_id)
             return redirect('/candidate/quiz/%d/application/' % (int(quiz_id),))
     else:

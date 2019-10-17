@@ -7,7 +7,7 @@
 
     <div class="login">
 
-            <form method="POST" action="candidate_add_application" id="form1">
+            <form method="POST" action="candidate_add_application" id="form1" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ application_form.as_p }}
     

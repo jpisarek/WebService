@@ -71,6 +71,6 @@ class Application(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
     candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE)
     description = models.CharField(max_length=200)
-    attachment = models.FileField(upload_to='files/')
+    attachment = models.FileField()
     score = models.IntegerField(default=0)
     status = models.CharField(max_length=50)

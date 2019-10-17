@@ -1,0 +1,27 @@
+{% extends 'candidate/candidate_home.html' %}
+
+{% block addapplication %}
+    <div class="header">
+        <h3>Dodaj swoją aplikację</h3>   
+    </div>
+
+    <div class="login">
+
+            <form method="POST" action="candidate_add_application" id="form1">
+                    {% csrf_token %}
+                    {{ application_form.as_p }}
+    
+                    <script type="text/javascript">
+                        document.getElementById("applicationButton").onclick = function () {
+                            location.href = "{% url 'candidate_add_application' quiz_id %}";                   
+                        };
+                    </script>
+                    
+            </form>
+    
+        </div>
+            
+        <div class="buttons">
+            <button type="submit" value="Submit" form="form1" id="applicationButton">Zaaplikuj</button>
+        </div>
+{% endblock %}

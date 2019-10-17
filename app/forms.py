@@ -1,8 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from app.models import Candidate, Quiz, Question, Answer, JobPosting
-from django.forms import ModelForm, Textarea, TextInput
+from app.models import Candidate, Quiz, Question, Answer, JobPosting, Application
+from django.forms import ModelForm, Textarea, TextInput, FileField
 
 class SignUpForm(ModelForm):
     class Meta:
@@ -77,6 +77,20 @@ class JobPostingAddForm(ModelForm):
     def save(self, for_organization):
         self.instance.organization_id = for_organization
         return super().save()
+
+
+class ApplicationAddForm(ModelForm):
+    class Meta:
+        model = Application
+        fields = ('description', 'attachment')
+        labels = {
+            'description': 'Opis swojej osoby',
+            'attachment': 'Załącznik'
+        }
+        widgets = {
+            'description': Textarea(attrs={'cols': 100, 'rows': 2}),
+            'attachment': FileField()
+        }
 
 
 class LoginForm(ModelForm):

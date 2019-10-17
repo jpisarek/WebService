@@ -2,10 +2,10 @@
 {
 	width: 100%;
 	padding: 10px 0;
-	background-color: rgba(0, 87, 128, 0.8);
+	background-color: rgba(65, 197, 250, 0.8);
 	text-align: center;
-	border-top: 1px solid #033a53;
-	border-bottom: 1px solid #033a53;
+	border-top: 1px solid #0f5b7e;
+	border-bottom: 1px solid #0f5b7e;
 }
 
 ol
@@ -31,7 +31,7 @@ ol > li
 	float: left;
 	width: 150px;
 	height: 40px;
-	border-right: 1px dashed #033a53;
+	border-right: 1px dashed #0f5b7e;
 }
 
 ol > li:hover
@@ -64,7 +64,7 @@ ol >li > ul > li
 	background-color: rgba(29, 135, 184, 0.7);
 	position: relative;
 	z-index: 100;
-	border-top: 1px dashed #033a53;
+	border-top: 1px dashed #0f5b7e;
 }
 
 ol > li > ul > li:hover

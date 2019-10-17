@@ -38,14 +38,6 @@ class JobPosting(models.Model):
         return str(self.job_position)
 
 
-class Application(models.Model):
-    job_position = models.ForeignKey(JobPosting, on_delete=models.CASCADE)
-    candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE)
-    description = models.CharField(max_length=200)
-    attachment = models.FileField(upload_to='files/')
-    status = models.CharField(max_length=50)
-
-
 class Quiz(models.Model):
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
@@ -72,7 +64,10 @@ class Answer(models.Model):
     is_boolean = models.BooleanField(default=False)
 
 
-class ApplicationQuiz(models.Model):
-    application = models.ForeignKey(Application, on_delete=models.CASCADE)
+class Application(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
-    score = models.IntegerField()
+    candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE)
+    description = models.CharField(max_length=200)
+    attachment = models.FileField(upload_to='files/')
+    score = models.IntegerField(default=0)
+    status = models.CharField(max_length=50)

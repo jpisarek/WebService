@@ -2,7 +2,7 @@
 {
 	width: 100%;
 	padding: 10px 0;
-	background-color: #005780;
+	background-color: rgba(0, 87, 128, 0.8);
 	text-align: center;
 	border-top: 1px solid #033a53;
 	border-bottom: 1px solid #033a53;
@@ -36,7 +36,7 @@ ol > li
 
 ol > li:hover
 {
-	background-color: #1d87b8;
+	background-color: rgba(29, 135, 184, 0.7);
 }
 
 ol > li:hover > a
@@ -61,7 +61,7 @@ ol > li:hover > ul
 
 ol >li > ul > li
 {
-	background-color: #1d87b8;
+	background-color: rgba(29, 135, 184, 0.7);
 	position: relative;
 	z-index: 100;
 	border-top: 1px dashed #033a53;
@@ -69,7 +69,7 @@ ol >li > ul > li
 
 ol > li > ul > li:hover
 {
-	background-color: #1d87b8;
+	background-color: rgba(29, 135, 184, 0.7);
 }
 
 ol > li > ul > li:hover > a
@@ -88,7 +88,7 @@ ol > li > ul > li:hover > a
 {
 	padding: 10px;
 	text-align: center;
-	background-color: rgba(0,0,0,0.2);
+	background-color: rgba(0,0,0,0.3);
 	margin: 7px;
 	border-radius: 5px;
 }
@@ -115,4 +115,26 @@ a.quizlink:hover
     width: 50%;
     margin-left: auto;
     margin-right: auto;
+}
+
+input[type=button],
+button[type=submit]
+{
+	background-color: rgba(0,0,0, 0.6);
+	width: 200px;
+	font-size: 15px;
+	color: white;
+	padding: 10px 10px;
+	margin-top: 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	letter-spacing: 2px;
+	outline: none;
+}
+
+input[type=button]:hover,
+button[type=submit]:hover
+{
+	background-color: rgba(0,0,0, 0.5);
 }

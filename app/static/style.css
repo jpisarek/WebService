@@ -1,17 +1,10 @@
 body
 {
+	background-image: url("hexellence.png");
 	background-color: #404040;
 	color: #ffffff;
 	font-size: 20px;
 	font-family: 'Lato', sans-serif;
-}
-
-.area
-{
-	height: 2px;
-	width: 100%;
-	padding: 10px 0;
-	background-color: green;
 }
 
 .header
@@ -24,13 +17,50 @@ body
 .buttons_home
 {
 	padding-top: 10px;
-	float: right;
+	text-align: center;
 }
 
 .buttons
 {
 	text-align: center;
 	padding: 25px;
+}
+
+#regButton, #logButton, #loginButton, #registerButton
+{
+	background-color: #36b03c;
+	width: 150px;
+	font-size: 15px;
+	color: white;
+	padding: 10px 10px;
+	margin-top: 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	letter-spacing: 2px;
+	outline: none;
+}
+
+#regButton:hover, #logButton:hover, #loginButton:hover, #registerButton:hover
+{
+	background-color: #37b93d;
+}
+
+#form1 > p > input[type=text],
+#form1 > p > input[type=password],
+#form2 > p > input[type=text],
+#form2 > p > input[type=password]
+{
+	width: 300px;
+	background-color: #efefef;
+	color: #404040;
+	border: 2px solid #dddddd;
+	border-radius: 5px;
+	font-size: 16px;
+	padding: 4px;
+	box-sizing: border-box;
+	outline: none;
+	margin-top: 10px;
 }
 
 .login
@@ -50,12 +80,6 @@ textarea
 .helptext
 {
 	display: none;
-}
-
-#form1 > p > input 
-{	
-	padding: 3px;
-	align-items: center;
 }
 
 #form1 > p > label 

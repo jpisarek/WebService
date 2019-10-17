@@ -2,7 +2,7 @@
 {
 	width: 100%;
 	padding: 10px 0;
-	background-color: #008000;
+	background-color: rgba(53, 175, 60, 0.8);
 	text-align: center;
 	border-top: 1px solid #015801;
 	border-bottom: 1px solid #015801;
@@ -36,7 +36,7 @@ ol > li
 
 ol > li:hover
 {
-	background-color: #428f42;
+	background-color: rgba(53, 175, 60, 0.9);
 }
 
 ol > li:hover > a
@@ -61,7 +61,7 @@ ol > li:hover > ul
 
 ol >li > ul > li
 {
-	background-color: #428f42;
+	background-color: rgba(53, 175, 60, 0.9);
 	position: relative;
 	z-index: 100;
 	border-top: 1px dashed #015801;
@@ -69,7 +69,7 @@ ol >li > ul > li
 
 ol > li > ul > li:hover
 {
-	background-color: #428f42;
+	background-color: rgba(53, 175, 60, 0.9);
 }
 
 ol > li > ul > li:hover > a
@@ -85,18 +85,18 @@ table
 
 td
 {
-	border: 1px solid rgba(0,0,0,0.3);
+	border: 1px solid rgba(0,0,0,0.5);
   	text-align: left;
-	  padding: 8px;
-	  background-color: rgba(0,0,0,0.1);
+	padding: 8px;
+	background-color: rgba(0,0,0,0.4);
 }
 
 th
 {
-	border: 1px solid rgba(0,0,0,0.3);
+	border: 1px solid rgba(0,0,0,0.5);
   	text-align: left;
 	padding: 8px;
-	background-color: rgba(0,0,0,0.3);
+	background-color: rgba(0,0,0,0.6);
 }
 
 .overview
@@ -110,7 +110,7 @@ th
 {
 	padding: 10px;
 	text-align: center;
-	background-color: rgba(0,0,0,0.2);
+	background-color: rgba(0,0,0,0.3);
 	margin: 7px;
 	border-radius: 5px;
 }
@@ -150,9 +150,81 @@ a.quizlink:hover
 	padding: 3px;
 }
 
+#form5 > p > label 
+{
+	display: block;
+	padding: 3px;
+}
+
 #form6 > p > label 
 {
 	display: block;
 	padding: 3px;
 }
 
+input[type=button],
+button[type=submit]
+{
+	background-color: rgba(0,0,0, 0.6);
+	width: 200px;
+	font-size: 15px;
+	color: white;
+	padding: 10px 10px;
+	margin-top: 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	letter-spacing: 2px;
+	outline: none;
+}
+
+input[type=button]:hover,
+button[type=submit]:hover
+{
+	background-color: rgba(0,0,0, 0.5);
+}
+
+#form3 > p > input[type=text],
+#form3 > p > select,
+#form6 > p > input[type=text],
+#form6 > p > select
+{
+	width: 300px;
+	background-color: #efefef;
+	color: #404040;
+	border: 2px solid #dddddd;
+	border-radius: 5px;
+	font-size: 16px;
+	padding: 4px;
+	box-sizing: border-box;
+	outline: none;
+	margin-top: 10px;
+}
+
+#form4 > p > textarea
+{
+	width: 600px;
+	background-color: #efefef;
+	color: #404040;
+	border: 2px solid #dddddd;
+	border-radius: 5px;
+	font-size: 16px;
+	padding: 4px;
+	box-sizing: border-box;
+	outline: none;
+	margin-top: 10px;
+}
+
+#form5 > p > textarea
+{
+	width: 600px;
+	background-color: #efefef;
+	color: #404040;
+	border: 2px solid #dddddd;
+	border-radius: 5px;
+	font-size: 16px;
+	padding: 4px;
+	box-sizing: border-box;
+	outline: none;
+	margin-top: 10px;
+}

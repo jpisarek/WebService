@@ -49,18 +49,18 @@ def login_page(request):
     return render(request, 'registration/login.html', {'login_form': login_form})
 
 
-@login_required
+@login_required(login_url='/login')
 def recruiter_home(request):
     return render(request, 'recruiter/recruiter_home.html')
 
 
-@login_required
+@login_required(login_url='/login')
 def recruiter_rank(request):
     candidates = Candidate.objects.all().order_by('id')
     return render(request, 'recruiter/recruiter_rank.html', {'candidates': candidates})
 
 
-@login_required
+@login_required(login_url='/login')
 def recruiter_quiz_add(request):
     if request.user.is_authenticated:
         user = User.objects.get(username=request.user)
@@ -80,7 +80,7 @@ def recruiter_quiz_add(request):
     return render(request, 'recruiter/recruiter_quiz_add.html', {'quiz_form': quiz_form,},)
 
 
-@login_required
+@login_required(login_url='/login')
 def recruiter_question_add(request, quiz_id):
     quiz_ = Quiz.objects.get(id=quiz_id)
     quiz_name = quiz_.name
@@ -97,13 +97,13 @@ def recruiter_question_add(request, quiz_id):
     return render(request, 'recruiter/recruiter_question_add.html', {'question_form': question_form, 'quiz_name': quiz_name, 'quiz_id': quiz_id, 'questionS': questionS})
 
 
-@login_required
+@login_required(login_url='/login')
 def recruiter_quiz_overview(request):
     quizzes = Quiz.objects.all().order_by('id')
     return render(request, 'recruiter/recruiter_quiz_overview.html', {'quizzes': quizzes})
 
 
-@login_required
+@login_required(login_url='/login')
 def recruiter_answer_add(request, question_id):
     question_ = Question.objects.get(id=question_id)
     question_content = question_.content
@@ -133,7 +133,7 @@ def recruiter_answer_add(request, question_id):
     return render(request, 'recruiter/recruiter_answer_add.html', {'formset': formset, 'question_content': question_content})
 
 
-@login_required
+@login_required(login_url='/login')
 def recruiter_position_add(request):
     if request.method == 'POST':
         position_form = JobPostingAddForm(request.POST)
@@ -147,18 +147,18 @@ def recruiter_position_add(request):
     return render(request, 'recruiter/recruiter_position_add.html', {'position_form': position_form,},)
 
 
-@login_required
+@login_required(login_url='/login')
 def candidate_home(request):
     return render(request, 'candidate/candidate_home.html')
 
 
-@login_required
+@login_required(login_url='/login')
 def candidate_quiz_overview(request):
     quizzes = Quiz.objects.all().order_by('id')
     return render(request, 'candidate/candidate_quiz_overview.html', {'quizzes': quizzes})
 
 
-@login_required
+@login_required(login_url='/login')
 def candidate_quiz_start(request, quiz_id):
     quiz_ = Quiz.objects.get(id=quiz_id)
     quiz_name = quiz_.name

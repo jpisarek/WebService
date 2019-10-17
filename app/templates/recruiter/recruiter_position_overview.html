@@ -8,7 +8,7 @@
     <div class="overview">
             {% for position in positions %}
                 <div class="quizzes">
-                    <a class="quizlink" href="{% url 'recruiter_position_overview' %}">{{ position.job_position }}</a>
+                    <a class="quizlink" href="{% url 'recruiter_position_quiz' position.id %}">{{ position.job_position }}</a>
                     <p>{{ position.description }}</p>
                 </div>
             {% endfor %}

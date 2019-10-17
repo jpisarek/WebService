@@ -36,4 +36,5 @@ urlpatterns = [
     url(r'^candidate/quiz/(\d+)/', views.candidate_quiz_start, name='candidate_quiz_start'),
     url(r'^recruiter/position/add/', views.recruiter_position_add, name='recruiter_position_add'),
     url(r'^recruiter/position/overview/', views.recruiter_position_overview, name='recruiter_position_overview'),
+    url(r'^recruiter/position/(\d+)/quiz/', views.recruiter_position_quiz, name='recruiter_position_quiz'),
 ]

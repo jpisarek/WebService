@@ -163,6 +163,16 @@ def recruiter_position_overview(request):
     return render(request, 'recruiter/recruiter_position_overview.html', {'positions': positions})
 
 
+@login_required(login_url='/login') 
+def recruiter_position_quiz(request, position_id):
+    organization = take_organization(request)
+    position = JobPosting.objects.all().filter(organization_id=organization)
+    print(position)
+    quizzes = Quiz.objects.all().filter(job_position_id=position_id)
+    print(quizzes)
+    return render(request, 'recruiter/recruiter_position_quiz.html', {'quizzes': quizzes})
+
+
 @login_required(login_url='/login')
 def candidate_home(request):
     return render(request, 'candidate/candidate_home.html')

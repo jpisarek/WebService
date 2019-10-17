@@ -1,0 +1,15 @@
+{% extends 'recruiter/recruiter_home.html' %}
+
+{% block overviewquiz %}
+    <div class="header">
+        <h3>Przeglądaj quizy z danego stanowiska</h3>   
+    </div>
+
+    <div class="overview">
+            {% for quiz in quizzes %}
+                <div class="quizzes">
+                    <a class="quizlink" href="{% url 'recruiter_question_add' quiz.id %}">{{ quiz.name }}</a>
+                </div>
+            {% endfor %}
+    </div>
+{% endblock %}

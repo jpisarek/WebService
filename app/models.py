@@ -28,6 +28,9 @@ class Candidate(models.Model):
     email = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
 
+    def __str__(self):
+        return str(self.first_name + self.last_name)
+
 
 class JobPosting(models.Model):
     job_position = models.CharField(max_length=30)

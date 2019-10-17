@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
-from app.forms import SignUpForm, QuizAddForm, QuestionAddForm, AnswerAddForm, LoginForm, JobPostingAddForm
+from app.forms import SignUpForm, QuizAddForm, QuestionAddForm, AnswerAddForm, LoginForm, JobPostingAddForm, ApplicationAddForm
 from app.models import Organization, Recruiter, Candidate, Quiz, Question, Answer, JobPosting, User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -184,19 +184,20 @@ def candidate_quiz_overview(request):
     return render(request, 'candidate/candidate_quiz_overview.html', {'quizzes': quizzes})
 
 
-@login_required(login_url='/login')
-def candidate_quiz_start(request, quiz_id):
-    quiz_ = Quiz.objects.get(id=quiz_id)
-    quiz_name = quiz_.name
-    questions = Question.objects.all().filter(quiz_id=quiz_id)
-    for q in range(len(questions)):
-        questions_id = questions[q].id
-        answers = Answer.objects.all().filter(question_id=questions_id)
-        for answer in answers:
-            answer.is_clicked = True
-        questions[q].answers = answers
+# @login_required(login_url='/login')
+# def candidate_quiz_start(request, quiz_id):
+    # quiz_ = Quiz.objects.get(id=quiz_id)
+    # quiz_name = quiz_.name
+    # questions = Question.objects.all().filter(quiz_id=quiz_id)
+    # for q in range(len(questions)):
+    #     questions_id = questions[q].id
+    #     answers = Answer.objects.all().filter(question_id=questions_id)
+    #     for answer in answers:
+    #         answer.is_clicked = True
+    #     questions[q].answers = answers
     
-    return render(request, 'candidate/candidate_quiz_start.html', {'quiz_name': quiz_name, 'quiz_id': quiz_id, 'questions': questions})
+    # return render(request, 'candidate/candidate_quiz_start.html', {'quiz_name': quiz_name, 'quiz_id': quiz_id, 'questions': questions})
+
 
 
 @login_required(login_url='/login')
@@ -210,3 +211,28 @@ def candidate_position_quiz(request, position_id):
     position = JobPosting.objects.all()
     quizzes = Quiz.objects.all().filter(job_position_id=position_id)
     return render(request, 'candidate/candidate_position_quiz.html', {'quizzes': quizzes})
+
+
+@login_required(login_url='/login')
+def candidate_add_application(request, quiz_id):
+    if request.user.is_authenticated:
+        user = User.objects.get(username=request.user)
+        candidate = Candidate.objects.get(user_id=user.id)
+        for_candidate = candidate.id
+
+        print(for_candidate)
+
+    quiz_ = Quiz.objects.get(id=quiz_id)
+    quiz_name = quiz_.name
+    print(quiz_name)
+
+    if request.method == 'POST':
+        application_form = ApplicationAddForm(request.POST, request.FILES)
+        if application_form.is_valid():
+            description = application_form.cleaned_data.get('description')
+            # attachment = application_form.cleaned_data.get(request.FILES['attachment'])
+            application_form.save(for_candidate, quiz_id)
+            return redirect('/candidate/quiz/%d/application/' % (int(quiz_id),))
+    else:
+        application_form = ApplicationAddForm()
+    return render(request, 'candidate/candidate_add_application.html', {'application_form': application_form, 'quiz_id': quiz_id})

@@ -82,15 +82,20 @@ class JobPostingAddForm(ModelForm):
 class ApplicationAddForm(ModelForm):
     class Meta:
         model = Application
-        fields = ('description', 'attachment')
+        fields = ('description',)
         labels = {
             'description': 'Opis swojej osoby',
-            'attachment': 'Załącznik'
+            # 'attachment': 'Załącznik'
         }
         widgets = {
             'description': Textarea(attrs={'cols': 100, 'rows': 2}),
-            'attachment': FileField()
+            # 'attachment': FileField()
         }
+
+    def save(self, for_candidate, for_quiz):
+        self.instance.candidate_id = for_candidate
+        self.instance.quiz_id = for_quiz
+        return super().save()
 
 
 class LoginForm(ModelForm):

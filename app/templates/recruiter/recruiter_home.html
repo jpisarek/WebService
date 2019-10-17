@@ -21,7 +21,7 @@
                     <li><a href="{% url 'recruiter_home' %}">Pozycja</a>
                         <ul>
                             <li><a href="{% url 'recruiter_position_add' %}">Dodaj</a></li>
-                            <li><a href="#">Przeglądaj</a></li>
+                            <li><a href="{% url 'recruiter_position_overview' %}">Przeglądaj</a></li>
                         </ul>
                     </li>
                     <li><a href="{% url 'recruiter_rank' %}">Ranking</a></li>
@@ -43,6 +43,9 @@
             {% endblock %}
 
             {% block addposition %}
+            {% endblock %}
+
+            {% block overviewposiotion %}
             {% endblock %}
 
             {% block ranking %}

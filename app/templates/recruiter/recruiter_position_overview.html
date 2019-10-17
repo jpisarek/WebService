@@ -1,0 +1,16 @@
+{% extends 'recruiter/recruiter_home.html' %}
+
+{% block overviewposiotion %}
+    <div class="header">
+        <h3>Przeglądaj stanowiska pracy</h3>   
+    </div>
+
+    <div class="overview">
+            {% for position in positions %}
+                <div class="quizzes">
+                    <a class="quizlink" href="{% url 'recruiter_position_overview' %}">{{ position.job_position }}</a>
+                    <p>{{ position.description }}</p>
+                </div>
+            {% endfor %}
+    </div>
+{% endblock %}

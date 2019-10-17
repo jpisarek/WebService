@@ -2,10 +2,19 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
 from app.forms import SignUpForm, QuizAddForm, QuestionAddForm, AnswerAddForm, LoginForm, JobPostingAddForm
-from app.models import Organization, Recruiter, Candidate, Quiz, Question, Answer, User
+from app.models import Organization, Recruiter, Candidate, Quiz, Question, Answer, JobPosting, User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.forms import formset_factory
+
+
+def take_organization(request):
+    if request.user.is_authenticated:
+        user = User.objects.get(username=request.user)
+        recruiter = Recruiter.objects.get(user_id=user.id)
+        organization = Organization.objects.get(id=recruiter.organization_id)
+        return(organization.id)
+
 
 def home_page(request):
     return render(request, 'home.html')
@@ -96,7 +105,8 @@ def recruiter_question_add(request, quiz_id):
 
 @login_required(login_url='/login')
 def recruiter_quiz_overview(request):
-    quizzes = Quiz.objects.all().order_by('id')
+    organization = take_organization(request)
+    quizzes = Quiz.objects.all().filter(organization_id=organization).order_by('id')
     return render(request, 'recruiter/recruiter_quiz_overview.html', {'quizzes': quizzes})
 
 
@@ -147,6 +157,13 @@ def recruiter_position_add(request):
 
 
 @login_required(login_url='/login')
+def recruiter_position_overview(request):
+    organization = take_organization(request)
+    positions = JobPosting.objects.all().filter(organization_id=organization).order_by('id')
+    return render(request, 'recruiter/recruiter_position_overview.html', {'positions': positions})
+
+
+@login_required(login_url='/login')
 def candidate_home(request):
     return render(request, 'candidate/candidate_home.html')
 
@@ -170,11 +187,3 @@ def candidate_quiz_start(request, quiz_id):
         questions[q].answers = answers
     
     return render(request, 'candidate/candidate_quiz_start.html', {'quiz_name': quiz_name, 'quiz_id': quiz_id, 'questions': questions})
-
-
-def take_organization(request):
-    if request.user.is_authenticated:
-        user = User.objects.get(username=request.user)
-        recruiter = Recruiter.objects.get(user_id=user.id)
-        organization = Organization.objects.get(id=recruiter.organization_id)
-        return(organization.id)

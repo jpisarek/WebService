@@ -144,6 +144,7 @@ def recruiter_position_add(request):
         position_form = JobPostingAddForm(request.POST)
         if position_form.is_valid():
             job_position = position_form.cleaned_data.get('job_position')
+            description = position_form.cleaned_data.get('description')
             position_form.save(for_organization=organization.id)
             return redirect('/recruiter/position/add/')
     else:

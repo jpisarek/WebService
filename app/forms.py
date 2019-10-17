@@ -68,9 +68,10 @@ class AnswerAddForm(ModelForm):
 class JobPostingAddForm(ModelForm):
     class Meta:
         model = JobPosting
-        fields = ('job_position',)
+        fields = ('job_position', 'description')
         labels = {
-            'job_position': 'Pozycja'
+            'job_position': 'Pozycja',
+            'description': 'Opis stanowiska'
         }
 
     def save(self, for_organization):

@@ -31,6 +31,7 @@ class Candidate(models.Model):
 
 class JobPosting(models.Model):
     job_position = models.CharField(max_length=30)
+    description = models.CharField(max_length=500, default="Domyślny opis")
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
 
     def __str__(self):

@@ -228,3 +228,18 @@ button[type=submit]:hover
 	outline: none;
 	margin-top: 10px;
 }
+
+#form6 > p > input[id=id_description]
+{
+	width: 600px;
+	height: 150px;
+	background-color: #efefef;
+	color: #404040;
+	border: 2px solid #dddddd;
+	border-radius: 5px;
+	font-size: 16px;
+	padding: 4px;
+	box-sizing: border-box;
+	outline: none;
+	margin-top: 10px;
+}

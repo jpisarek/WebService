@@ -203,3 +203,10 @@ def candidate_quiz_start(request, quiz_id):
 def candidate_position_overview(request):
     positions = JobPosting.objects.all().order_by('id')
     return render(request, 'candidate/candidate_position_overview.html', {'positions': positions})
+
+
+@login_required(login_url='/login')
+def candidate_position_quiz(request, position_id):
+    position = JobPosting.objects.all()
+    quizzes = Quiz.objects.all().filter(job_position_id=position_id)
+    return render(request, 'candidate/candidate_position_quiz.html', {'quizzes': quizzes})

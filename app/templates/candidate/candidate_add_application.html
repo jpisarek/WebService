@@ -7,7 +7,7 @@
 
     <div class="login">
 
-            <form method="POST" action="candidate_add_application" id="form1" enctype="multipart/form-data">
+            <form method="POST" action="candidate_add_application" id="form2" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ application_form.as_p }}
     
@@ -22,6 +22,6 @@
         </div>
             
         <div class="buttons">
-            <button type="submit" value="Submit" form="form1" id="applicationButton">Zaaplikuj</button>
+            <button type="submit" value="Submit" form="form2" id="applicationButton">Zaaplikuj</button>
         </div>
 {% endblock %}

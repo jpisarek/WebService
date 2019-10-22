@@ -70,6 +70,13 @@ body
 	text-align: center;
 }
 
+#logout
+{
+	background-color: #adaaaa;
+	border-right: none;
+	border-radius: 5px;
+}
+
 textarea 
 {
 	border: 5px solid #ffffff;

@@ -31,7 +31,6 @@ ol > li
 	float: left;
 	width: 150px;
 	height: 40px;
-	border-right: 1px dashed #0f5b7e;
 }
 
 ol > li:hover

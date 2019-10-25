@@ -97,6 +97,10 @@ class ApplicationAddForm(ModelForm):
         self.instance.quiz_id = for_quiz
         return super().save()
 
+    def take_id(self):
+        for_application = self.instance.id
+        return for_application
+
 
 class LoginForm(ModelForm):
     class Meta:

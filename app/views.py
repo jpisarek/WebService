@@ -203,14 +203,16 @@ def candidate_add_application(request, quiz_id):
             description = application_form.cleaned_data.get('description')
             attachment = application_form.cleaned_data.get('attachment')
             application_form.save(for_candidate, quiz_id)
-            return redirect('/candidate/quiz/%d/' % (int(quiz_id),))
+            application_id = application_form.take_id()
+            print(application_id)
+            return redirect('/candidate/quiz/%d/%d/' % (int(quiz_id), int(application_id),))
     else:
         application_form = ApplicationAddForm()
-    return render(request, 'candidate/candidate_add_application.html', {'application_form': application_form, 'quiz_id': quiz_id})
+    return render(request, 'candidate/candidate_add_application.html', {'application_form': application_form, 'quiz_id': quiz_id,})
 
 
 @login_required(login_url='/login')
-def candidate_quiz_start(request, quiz_id):
+def candidate_quiz_start(request, quiz_id, application_id):
     quiz_ = Quiz.objects.get(id=quiz_id)
     quiz_name = quiz_.name
     questions = Question.objects.all().filter(quiz_id=quiz_id)
@@ -220,8 +222,16 @@ def candidate_quiz_start(request, quiz_id):
         for answer in answers:
             answer.is_clicked = True
         questions[q].answers = answers
+
+    if request.method == 'POST':
+        return redirect('/candidate/%d/score' % (int(application_id),))
      
     return render(request, 'candidate/candidate_quiz_start.html', {'quiz_name': quiz_name, 'quiz_id': quiz_id, 'questions': questions})
+
+
+@login_required(login_url='/login')
+def candidate_quiz_score(request, application_id):
+    return render(request, 'candidate/candidate_quiz_score.html')
 
 
 @login_required(login_url='/login')

@@ -39,7 +39,8 @@ urlpatterns = [
     url(r'^candidate/home', views.candidate_home, name='candidate_home'),
     url(r'^candidate/quiz/overview/', views.candidate_quiz_overview, name='candidate_quiz_overview'),
     url(r'^candidate/quiz/(\d+)/application/', views.candidate_add_application, name='candidate_add_application'),
-    url(r'^candidate/quiz/(\d+)/', views.candidate_quiz_start, name='candidate_quiz_start'),
+    url(r'^candidate/quiz/(\d+)/(\d+)/', views.candidate_quiz_start, name='candidate_quiz_start'),
+    url(r'^candidate/(\d+)/score', views.candidate_quiz_score, name='candidate_quiz_score'),
     url(r'^candidate/position/overview/', views.candidate_position_overview, name='candidate_position_overview'),
     url(r'^candidate/position/(\d+)/quiz/', views.candidate_position_quiz, name='candidate_position_quiz'),
 ]

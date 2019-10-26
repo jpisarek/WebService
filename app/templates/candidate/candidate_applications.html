@@ -2,13 +2,13 @@
 
 {% block overviewquiz %}
     <div class="header">
-        <h3>Przeglądaj quizy z danego stanowiska</h3>   
+        <h3>Moje aplikacje</h3>   
     </div>
 
     <div class="overview">
-            {% for quiz in quizzes %}
+            {% for application in applications %}
                 <div class="quizzes">
-                    <a class="quizlink" href="{% url 'candidate_add_application' quiz.id %}">{{ quiz.name }}</a>
+                    <a class="quizlink" href="#">{{ application.quizes }}</a>
                 </div>
             {% endfor %}
     </div>

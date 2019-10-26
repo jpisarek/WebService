@@ -259,3 +259,20 @@ def candidate_position_quiz(request, position_id):
     position = JobPosting.objects.all()
     quizzes = Quiz.objects.all().filter(job_position_id=position_id)
     return render(request, 'candidate/candidate_position_quiz.html', {'quizzes': quizzes})
+
+
+@login_required(login_url='/login')
+def candidate_applications(request):
+    if request.user.is_authenticated:
+        user = User.objects.get(username=request.user)
+        candidate = Candidate.objects.get(user_id=user.id)
+        applications = Application.objects.all().filter(candidate_id=candidate.id)
+        i = 0
+        for app in applications:
+            quiz_id = app.quiz_id
+            print(quiz_id)
+            quizes = Quiz.objects.get(id=quiz_id)
+            print(quizes)
+            applications[i].quizes = quizes
+            i = i + 1
+        return render(request, 'candidate/candidate_applications.html', {'applications': applications})

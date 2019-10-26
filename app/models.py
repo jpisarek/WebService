@@ -47,7 +47,7 @@ class Quiz(models.Model):
     job_position = models.ForeignKey(JobPosting, on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.name)
+        return str(self.job_position)
 
     def get_absolute_url(self):
         return reverse('recruiter_question_add', args=[self.id])
@@ -77,3 +77,6 @@ class Application(models.Model):
     attachment = models.FileField()
     score = models.IntegerField(default=0)
     status = models.CharField(max_length=50)
+
+    def __str__(self):
+        return str(self.quiz)

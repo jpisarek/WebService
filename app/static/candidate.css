@@ -82,3 +82,8 @@ button[type=submit]:hover
 {
 	margin-top: 10px;
 }
+
+.score
+{
+	text-align: center;
+}

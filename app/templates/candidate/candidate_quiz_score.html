@@ -3,7 +3,12 @@
 {% block overviewquiz %}
     <div class="header">
         <h3>Udało Ci się rozwiązać quiz!</h3>
-        <p>Twój wynik to: {{ application.score }} / {{ questions }}</p>
     </div>
+
+    <div class="score">
+        <p style="font-size: 20px;">Twój wynik to: {{ application.score }} / {{ questions }}</p>
+        <p>Aby dowiedzieć się jaki jest status Twojej aplikacji przejdź do zakładki Aplikacje. </br> Jeżeli jeszcze nic się nie zmieniło, nie martw się - już wkrótce rekruter zmodyfikuje status!</p>
+    </div>
+
 
 {% endblock %}

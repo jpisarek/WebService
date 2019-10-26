@@ -221,9 +221,12 @@ def candidate_quiz_start(request, quiz_id, application_id):
         answers = Answer.objects.all().filter(question_id=questions_id)
         for answer in answers:
             answer.is_clicked = True
+            a = answer.is_boolean
+            print(a)
         questions[q].answers = answers
 
     if request.method == 'POST':
+        print(request.POST)
         return redirect('/candidate/%d/score' % (int(application_id),))
      
     return render(request, 'candidate/candidate_quiz_start.html', {'quiz_name': quiz_name, 'quiz_id': quiz_id, 'questions': questions})

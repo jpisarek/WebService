@@ -1,8 +1,10 @@
 body
 {
-	background-image: url("hexellence.png");
-	background-color: #404040;
-	color: #ffffff;
+	background-color: rgba(255,255,255,1);
+	background-image: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(234,236,255,1) 90%);
+	
+	/* background-image: linear-gradient(90deg, #e9defa 0%, #fbfcdb 100%); */
+
 	font-size: 20px;
 	font-family: 'Lato', sans-serif;
 }

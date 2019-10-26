@@ -1,78 +1,6 @@
-.nav
+.bg-light
 {
-	width: 100%;
-	padding: 10px 0;
-	background-color: rgba(53, 175, 60, 0.8);
-	text-align: center;
-	border-top: 1px solid #015801;
-	border-bottom: 1px solid #015801;
-}
-
-ol
-{
-	padding: 0;
-	margin: 0;
-	list-style-type: none;
-	font-size: 18px;
-	height: 30px;
-	line-height: 200%;
-	display: inline-block;
-}
-
-ol a
-{
-	text-decoration: none;
-	color: #ffffff;
-	display: block;
-}
-
-ol > li
-{
-	float: left;
-	width: 150px;
-	height: 40px;
-}
-
-ol > li:hover
-{
-	background-color: rgba(53, 175, 60, 0.9);
-}
-
-ol > li:hover > a
-{
-	color: #013801;
-
-}
-
-ol > li > ul
-{
-	list-style-type: none;
-	padding: 0;
-	margin: 0;
-	height: 40px;
-	display: none;
-}
-
-ol > li:hover > ul
-{
-	display: block;
-}
-
-ol >li > ul > li
-{
-	background-color: rgba(53, 175, 60, 0.9);
-	position: relative;
-	z-index: 100;
-}
-
-ol > li > ul > li:hover
-{
-	background-color: rgba(53, 175, 60, 0.9);
-}
-
-ol > li > ul > li:hover > a
-{
-	color: #013801;
+	background-image: linear-gradient(90deg,  #36b03c 1.2%, #cbec38 100.2% );
 }
 
 table
@@ -86,7 +14,7 @@ td
 	border: 1px solid rgba(0,0,0,0.5);
   	text-align: left;
 	padding: 8px;
-	background-color: rgba(0,0,0,0.4);
+	background-color: rgba(134, 131, 131, 0.4);
 }
 
 th
@@ -94,7 +22,7 @@ th
 	border: 1px solid rgba(0,0,0,0.5);
   	text-align: left;
 	padding: 8px;
-	background-color: rgba(0,0,0,0.6);
+	background-color: rgba(71, 69, 69, 0.6);
 }
 
 .overview
@@ -116,12 +44,12 @@ th
 a.quizlink 
 {
     color: #ffffff;
-	text-decoration: none;
+	text-decoration: none!important;
 }
 
 a.quizlink:hover
 {
-	color: #428f42;
+	color: chartreuse;
 }
 
 .oldquestions

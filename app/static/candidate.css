@@ -1,79 +1,6 @@
-.nav
+.bg-light
 {
-	width: 100%;
-	padding: 10px 0;
-	background-color: rgba(65, 197, 250, 0.8);
-	text-align: center;
-	border-top: 1px solid #0f5b7e;
-	border-bottom: 1px solid #0f5b7e;
-}
-
-ol
-{
-	padding: 0;
-	margin: 0;
-	list-style-type: none;
-	font-size: 18px;
-	height: 30px;
-	line-height: 200%;
-	display: inline-block;
-}
-
-ol a
-{
-	text-decoration: none;
-	color: #ffffff;
-	display: block;
-}
-
-ol > li
-{
-	float: left;
-	width: 150px;
-	height: 40px;
-}
-
-ol > li:hover
-{
-	background-color: rgba(29, 135, 184, 0.7);
-}
-
-ol > li:hover > a
-{
-	color: #052230;
-
-}
-
-ol > li > ul
-{
-	list-style-type: none;
-	padding: 0;
-	margin: 0;
-	height: 40px;
-	display: none;
-}
-
-ol > li:hover > ul
-{
-	display: block;
-}
-
-ol >li > ul > li
-{
-	background-color: rgba(29, 135, 184, 0.7);
-	position: relative;
-	z-index: 100;
-	border-top: 1px dashed #0f5b7e;
-}
-
-ol > li > ul > li:hover
-{
-	background-color: rgba(29, 135, 184, 0.7);
-}
-
-ol > li > ul > li:hover > a
-{
-	color: #052230;
+	background-image: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);
 }
 
 .overview
@@ -95,12 +22,12 @@ ol > li > ul > li:hover > a
 a.quizlink 
 {
     color: #ffffff;
-	text-decoration: none;
+	text-decoration: none!important;
 }
 
 a.quizlink:hover
 {
-	color: #1d87b8;
+	color: #6ed2fa;
 }
 
 .oldquestions
@@ -113,7 +40,8 @@ a.quizlink:hover
     text-align: center;
     width: 50%;
     margin-left: auto;
-    margin-right: auto;
+	margin-right: auto;
+	font-size: 17px;;
 }
 
 input[type=button],

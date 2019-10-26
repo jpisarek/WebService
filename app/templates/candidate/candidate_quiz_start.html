@@ -10,22 +10,23 @@
     
         <form method="POST" action="recruiter_question_add" id="form1">
             {% csrf_token %}
+
+            <div class="oldquestions">
+                {% for question in questions %}
+                    <p style="color: #6ed2fa;">{{ question.content }}</p>
+                    <div>
+                        {% for answer in question.answers %}
+                            <p style="color: #d9dfd9;">{{ answer.content }}</p>
+                            <input type="radio" name="{{ question.id }}"  value="{{ answer.is_clicked }}">
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+
         </form>
     
     </div>
-    
-    <div class="oldquestions">
-        {% for question in questions %}
-            <p style="color: #1d87b8;">{{ question.content }}</p>
-            <div>
-                {% for answer in question.answers %}
-                    <p style="color: #d9dfd9;">{{ answer.content }}</p>
-                    <input type="radio" name="{{ question.id }}"  value="{{ answer.is_clicked }}">
-                {% endfor %}
-            </div>
-        {% endfor %}
-    </div>
-    
+
     <div class="buttons">
         <button type="submit" value="Submit" form="form1" id="submitquizButton">Wyślij quiz</button>
     </div>

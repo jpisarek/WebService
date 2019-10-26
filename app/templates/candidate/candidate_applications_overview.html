@@ -1,16 +1,43 @@
 {% extends 'candidate/candidate_home.html' %}
 
 {% block overviewquiz %}
-    <div class="header">
-        <h3>Moje aplikacje</h3>   
-    </div>
+<div class="header">
+    <h3>Moje aplikacje</h3>
+</div>
 
-    <div class="overview">
-            {% for application in applications %}
-                <div class="quizzes">
-                    <p>{{ application.position }}</p>
-                    <a class="quizlink" href="{% url 'candidate_application' application.id %}">{{ application.quiz_name }}</a>
+{% for application in applications %}
+    <div class="ui cards">
+        <div class="card">
+            <div class="content">
+                <div class="header">Aplikacja na stanowisko: {{application.position}}</div>
+                <div class="meta">Nazwa quizu: {{application.quiz_name}}</div>
+                <div class="description">
+                    Uzyskane punkty: {{application.score}} / {{application.full_score}} </br>
+                    <div class="status">Status aplikacji: </div>
+                    <div class="statusValue">
+                        {{application.status}}
+                    </div>
                 </div>
-            {% endfor %}
+            </div>
+        </div>
     </div>
+{% endfor %}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        console.log("ready!");
+        $(".statusValue").each(function () {
+            if ($(this).html().includes("Rozpatrywana"))
+                $(this).css("color", 'rgb(255, 198, 0)');
+
+            if ($(this).html().includes("Zaakceptowana"))
+                $(this).css("color", 'rgb(0, 161, 0)');
+
+            if ($(this).html().includes("Odrzucona"))
+                $(this).css("color", 'rgb(255, 1, 0)');
+
+        });
+
+    });
+</script>
 {% endblock %}

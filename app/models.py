@@ -76,7 +76,7 @@ class Application(models.Model):
     description = models.CharField(max_length=200)
     attachment = models.FileField()
     score = models.IntegerField(default=0)
-    status = models.CharField(max_length=50)
+    status = models.CharField(max_length=50, default="Rozpatrywana")
 
     def __str__(self):
         return str(self.quiz)

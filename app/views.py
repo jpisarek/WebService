@@ -270,18 +270,9 @@ def candidate_applications_overview(request):
         i = 0
         for app in applications:
             quiz_id = app.quiz_id
-            print(quiz_id)
             quizes = Quiz.objects.get(id=quiz_id)
             applications[i].position = quizes
             applications[i].quiz_name = quizes.name
+            applications[i].full_score = len(Question.objects.all().filter(quiz_id=applications[i].quiz_id))
             i = i + 1
         return render(request, 'candidate/candidate_applications_overview.html', {'applications': applications})
-
-
-@login_required(login_url='/login')
-def candidate_application(request, application_id):
-    application = Application.objects.get(id=application_id)
-    application.position_name = Quiz.objects.get(id=application.quiz_id)
-    application.quiz_name = Quiz.objects.get(id=application.quiz_id).name
-    application.full_score = len(Question.objects.all().filter(quiz_id=application.quiz_id))
-    return render(request, 'candidate/candidate_application.html', {'application': application})

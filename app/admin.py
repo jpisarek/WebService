@@ -47,5 +47,5 @@ class AnswerAdmin(admin.ModelAdmin):
 @admin.register(Application)
 class ApplicationAdmin(admin.ModelAdmin):
     search_fields = ['description', 'attachment', 'score', 'status']
-    fields = ('description', 'attachment', 'score')
+    fields = ('description', 'attachment', 'score', 'status')
     list_display = ('description', 'attachment', 'score', 'status')

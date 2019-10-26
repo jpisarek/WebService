@@ -14,7 +14,7 @@ td
 	border: 1px solid rgba(0,0,0,0.5);
   	text-align: left;
 	padding: 8px;
-	background-color: rgba(134, 131, 131, 0.4);
+	background-color: #fff;
 }
 
 th
@@ -22,7 +22,7 @@ th
 	border: 1px solid rgba(0,0,0,0.5);
   	text-align: left;
 	padding: 8px;
-	background-color: rgba(71, 69, 69, 0.6);
+	background-color: inherit;
 }
 
 .overview
@@ -43,13 +43,13 @@ th
 
 a.quizlink 
 {
-    color: #ffffff;
+    color: rgba(0,0,0,.85);
 	text-decoration: none!important;
 }
 
 a.quizlink:hover
 {
-	color: chartreuse;
+	color: #36b03c;
 }
 
 .oldquestions

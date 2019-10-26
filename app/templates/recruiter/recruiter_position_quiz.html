@@ -5,11 +5,14 @@
         <h3>Przeglądaj quizy z danego stanowiska</h3>   
     </div>
 
-    <div class="overview">
-            {% for quiz in quizzes %}
-                <div class="quizzes">
-                    <a class="quizlink" href="{% url 'recruiter_question_add' quiz.id %}">{{ quiz.name }}</a>
+    {% for quiz in quizzes %}
+        <div class="ui cards">
+            <div class="card">
+                <div class="content">
+                    <div class="header"><a class="quizlink" href="{% url 'recruiter_question_add' quiz.id %}">{{ quiz.name }}</a></div>
                 </div>
-            {% endfor %}
-    </div>
+            </div>
+        </div>
+    {% endfor %}
+
 {% endblock %}

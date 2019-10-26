@@ -23,13 +23,13 @@
 
 a.quizlink 
 {
-    color: #ffffff;
+    color: rgba(0,0,0,.85);
 	text-decoration: none!important;
 }
 
 a.quizlink:hover
 {
-	color: #6ed2fa;
+	color: #8baaaa;
 }
 
 .oldquestions
@@ -88,55 +88,6 @@ button[type=submit]:hover
 .score
 {
 	text-align: center;
-}
-
-.ui.cards>.card {
-    max-width: 100%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 600px;
-    min-height: 0;
-    background: #fff;
-    padding: 0;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
-	margin: auto;
-    margin-bottom: .875em;
-}
-
-.ui.cards>.card>.content {
-    border: none;
-    border-top: 1px solid rgba(34,36,38,.1);
-    background: 0 0;
-    padding: 13px 13px;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    font-size: 1em;
-    border-radius: 0;
-}
-
-.ui.cards>.card>.content>.header:not(.ui) {
-    font-weight: 700;
-    font-size: 20.5px;
-    margin-top: -8px;
-}
-
-.ui.cards>.card>.content>.header {
-    display: block;
-    color: rgba(0,0,0,.85);
-}
-
-.ui.cards>.card .meta {
-	font-size: 1em;
-	margin-top: -8px;
-    color: rgba(0,0,0,.5);
-}
-
-.ui.cards>.card>.content>.description {
-    clear: both;
-    color: rgba(0,0,0,.68);
 }
 
 .status

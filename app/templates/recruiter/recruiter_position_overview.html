@@ -5,12 +5,15 @@
         <h3>Przeglądaj stanowiska pracy</h3>   
     </div>
 
-    <div class="overview">
-            {% for position in positions %}
-                <div class="quizzes">
-                    <a class="quizlink" href="{% url 'recruiter_position_quiz' position.id %}">{{ position.job_position }}</a>
-                    <p>{{ position.description }}</p>
+    {% for position in positions %}
+        <div class="ui cards">
+            <div class="card">
+                <div class="content">
+                    <div class="header"><a class="quizlink" href="{% url 'recruiter_position_quiz' position.id %}">{{ position.job_position }}</a></div>
+                    <div class="meta">{{ position.description }}</div>
                 </div>
-            {% endfor %}
-    </div>
+            </div>
+        </div>
+    {% endfor %}
+
 {% endblock %}

@@ -8,7 +8,8 @@
     <div class="overview">
             {% for application in applications %}
                 <div class="quizzes">
-                    <a class="quizlink" href="#">{{ application.quizes }}</a>
+                    <p>{{ application.position }}</p>
+                    <a class="quizlink" href="{% url 'candidate_application' application.id %}">{{ application.quiz_name }}</a>
                 </div>
             {% endfor %}
     </div>

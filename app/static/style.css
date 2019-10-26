@@ -7,13 +7,13 @@ body
 	/* background-image: linear-gradient(90deg, #e9defa 0%, #fbfcdb 100%); */
 
 	font-size: 20px;
-	font-family: 'Lato', sans-serif;
+	font-family: 'Lato', sans-serif!important; 
 }
 
 .header
 {
 	width: 100%;
-	padding: 10px 0;
+	padding: 30px 0;
 	text-align: center;
 }
 

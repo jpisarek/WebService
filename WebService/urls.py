@@ -43,5 +43,6 @@ urlpatterns = [
     url(r'^candidate/(\d+)/score', views.candidate_quiz_score, name='candidate_quiz_score'),
     url(r'^candidate/position/overview/', views.candidate_position_overview, name='candidate_position_overview'),
     url(r'^candidate/position/(\d+)/quiz/', views.candidate_position_quiz, name='candidate_position_quiz'),
-    url(r'^candidate/applications/', views.candidate_applications, name="candidate_applications")
+    url(r'^candidate/applications/', views.candidate_applications_overview, name="candidate_applications_overview"),
+    url(r'^candidate/application/(\d+)/', views.candidate_application, name="candidate_application")
 ]

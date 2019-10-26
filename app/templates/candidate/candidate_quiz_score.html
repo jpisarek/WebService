@@ -3,11 +3,7 @@
 {% block overviewquiz %}
     <div class="header">
         <h3>Udało Ci się rozwiązać quiz!</h3>
-        <p>Twój wynik to:</p>
-    </div>
-    
-    <div>
-        Asia
+        <p>Twój wynik to: {{ application.score }} / {{ questions }}</p>
     </div>
 
 {% endblock %}

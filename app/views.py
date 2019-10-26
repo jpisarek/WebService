@@ -221,12 +221,20 @@ def candidate_quiz_start(request, quiz_id, application_id):
         answers = Answer.objects.all().filter(question_id=questions_id)
         for answer in answers:
             answer.is_clicked = True
-            a = answer.is_boolean
-            print(a)
         questions[q].answers = answers
 
     if request.method == 'POST':
-        print(request.POST)
+        point_counter = 0
+        x = dict(request.POST)
+        y = list(x.values())
+        y.pop(0)
+        for length in range(len(y)):
+            answer_id = str(y[length]).replace("['", '')
+            answer_id = str(answer_id).replace("']", '')
+            answer = Answer.objects.get(id=answer_id)
+            if answer.is_boolean == 1:
+                point_counter = point_counter + 1
+        application = Application.objects.filter(id=application_id).update(score=point_counter)
         return redirect('/candidate/%d/score' % (int(application_id),))
      
     return render(request, 'candidate/candidate_quiz_start.html', {'quiz_name': quiz_name, 'quiz_id': quiz_id, 'questions': questions})
@@ -234,7 +242,10 @@ def candidate_quiz_start(request, quiz_id, application_id):
 
 @login_required(login_url='/login')
 def candidate_quiz_score(request, application_id):
-    return render(request, 'candidate/candidate_quiz_score.html')
+    application = Application.objects.get(id=application_id)
+    quiz_id = application.quiz_id
+    questions = len(Question.objects.all().filter(quiz_id=quiz_id))
+    return render(request, 'candidate/candidate_quiz_score.html', {'application': application, 'questions': questions})
 
 
 @login_required(login_url='/login')

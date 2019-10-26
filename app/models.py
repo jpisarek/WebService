@@ -66,6 +66,9 @@ class Answer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     is_boolean = models.BooleanField(default=False)
 
+    def __str__(self):
+        return str(self.is_boolean)
+
 
 class Application(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)

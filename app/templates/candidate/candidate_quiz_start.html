@@ -17,7 +17,7 @@
                     <div>
                         {% for answer in question.answers %}
                             <p style="color: #d9dfd9;">{{ answer.content }}</p>
-                            <input type="radio" name="{{ question.id }}"  value="{{ answer.is_clicked }}">
+                            <input type="radio" name="{{ question.id }}"  value="{{ answer.id }}">
                         {% endfor %}
                     </div>
                 {% endfor %}

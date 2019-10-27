@@ -1,0 +1,26 @@
+{% extends 'recruiter/recruiter_home.html' %}
+
+{% block overviewquiz %}
+<div class="header">
+    <h3>Aplikacje kandydatow</h3>
+</div>
+
+{% for application in applications %}
+    <div class="ui cards">
+        <div class="card">
+            <div class="content">
+                <div class="header">Aplikacja na stanowisko: {{application.position}}</div>
+                <div class="meta">Nazwa quizu: {{application.quiz_name}}</div>
+                <div class="description">
+                    Uzyskane punkty: {{application.score}} / {{application.full_score}} </br>
+                    <div class="status">Status aplikacji: </div>
+                    <div class="statusValue">
+                        {{application.status}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock %}

@@ -173,6 +173,22 @@ def recruiter_position_quiz(request, position_id):
     return render(request, 'recruiter/recruiter_position_quiz.html', {'quizzes': quizzes})
 
 
+@login_required(login_url='/login') 
+def recruiter_applications_overview(request):
+    organization = take_organization(request)
+    quiz = list(Quiz.objects.all().filter(organization_id=organization).values_list('id', flat=True))
+    applications = Application.objects.all().filter(quiz_id__in=quiz)
+    i = 0
+    for app in applications:
+        quiz_id = app.quiz_id
+        quizes = Quiz.objects.get(id=quiz_id)
+        applications[i].position = quizes
+        applications[i].quiz_name = quizes.name
+        applications[i].full_score = len(Question.objects.all().filter(quiz_id=applications[i].quiz_id))
+        i = i + 1
+    return render(request,'recruiter/recruiter_applications_overview.html', {'applications': applications})
+
+
 @login_required(login_url='/login')
 def candidate_home(request):
     return render(request, 'candidate/candidate_home.html')

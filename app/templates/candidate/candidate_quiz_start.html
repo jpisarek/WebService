@@ -13,10 +13,10 @@
 
             <div class="oldquestions">
                 {% for question in questions %}
-                    <p style="color: #6ed2fa;">{{ question.content }}</p>
+                    <p style="color: rgba(0,0,0,.8);">{{ question.content }}</p>
                     <div>
                         {% for answer in question.answers %}
-                            <p style="color: #d9dfd9;">{{ answer.content }}</p>
+                            <p style="color: rgba(0,0,0,.8);">{{ answer.content }}</p>
                             <input type="radio" name="{{ question.id }}"  value="{{ answer.id }}">
                         {% endfor %}
                     </div>

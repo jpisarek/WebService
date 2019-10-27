@@ -29,7 +29,7 @@ class Candidate(models.Model):
     description = models.CharField(max_length=200)
 
     def __str__(self):
-        return str(self.first_name + self.last_name)
+        return str(self.first_name + " " + self.last_name)
 
 
 class JobPosting(models.Model):
@@ -77,6 +77,7 @@ class Application(models.Model):
     attachment = models.FileField()
     score = models.IntegerField(default=0)
     status = models.CharField(max_length=50, default="Rozpatrywana")
+    grade = models.IntegerField(default=0)
 
     def __str__(self):
         return str(self.quiz)

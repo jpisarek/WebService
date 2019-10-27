@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
-from app.forms import SignUpForm, QuizAddForm, QuestionAddForm, AnswerAddForm, LoginForm, JobPostingAddForm, ApplicationAddForm
+from app.forms import SignUpForm, QuizAddForm, QuestionAddForm, AnswerAddForm, LoginForm, JobPostingAddForm, ApplicationAddForm, ApplicationRecruiterForm
 from app.models import Organization, Recruiter, Candidate, Quiz, Question, Answer, JobPosting, User, Application
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -185,8 +185,28 @@ def recruiter_applications_overview(request):
         applications[i].position = quizes
         applications[i].quiz_name = quizes.name
         applications[i].full_score = len(Question.objects.all().filter(quiz_id=applications[i].quiz_id))
+        applications[i].candidate_name = Candidate.objects.get(id=applications[i].candidate_id)
         i = i + 1
     return render(request,'recruiter/recruiter_applications_overview.html', {'applications': applications})
+
+
+def recruiter_application_edit(request, application_id):
+    application = Application.objects.get(id=application_id)
+    application.position = Quiz.objects.get(id=application.quiz_id)
+    application.quiz_name = Quiz.objects.get(id=application.quiz_id).name
+    application.full_score = len(Question.objects.all().filter(quiz_id=application.quiz_id))
+    application.candidate_name = Candidate.objects.get(id=application.candidate_id)
+    
+    if request.method == 'POST':
+        application_recruit_form = ApplicationRecruiterForm(request.POST, instance=application)
+        if application_recruit_form.is_valid():
+            status = application_recruit_form.cleaned_data.get('status')
+            grade = application_recruit_form.cleaned_data.get('grade')
+            application_recruit_form.save()
+            return redirect('/recruiter/applications/')
+    else:
+        application_recruit_form = ApplicationRecruiterForm(instance=application)
+    return render(request, 'recruiter/recruiter_application_edit.html', {'application': application, 'application_recruit_form': application_recruit_form})
 
 
 @login_required(login_url='/login')

@@ -1,0 +1,32 @@
+{% extends 'recruiter/recruiter_home.html' %}
+
+{% block overviewquiz %}
+<div class="header">
+    <h3>Aplikacja kandydata: {{application.candidate_name}}</h3>
+</div>
+
+<div class="ui cards">
+    <div class="card">
+        <div class="content">
+            <div class="header">Aplikacja na stanowisko: {{application.position}}</div>
+            <div class="meta">
+                <div class="dane">Dane kandydata: {{application.candidate_name}}</div>
+                <div class="dane">Opis kandydata: {{application.description}}</div>
+            </div>
+            <div class="description">
+                Nazwa quizu: {{application.quiz_name}} </br>
+                Uzyskane punkty: {{application.score}} / {{application.full_score}} </br>
+
+                <form method="POST" action="recruiter_application_edit" id="form8">
+                        {% csrf_token %}
+                        {{application_recruit_form.as_p}}
+                </form>
+
+                <button type="submit" value="Submit" form="form8" id="saveButton">Zapisz</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

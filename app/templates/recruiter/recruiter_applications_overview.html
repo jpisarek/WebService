@@ -10,13 +10,16 @@
         <div class="card">
             <div class="content">
                 <div class="header">Aplikacja na stanowisko: {{application.position}}</div>
-                <div class="meta">Nazwa quizu: {{application.quiz_name}}</div>
+                <div class="meta">
+                    <div class="dane">Dane kandydata: {{application.candidate_name}}</div>
+                    <div class="dane">Opis kandydata: {{application.description}}</div>
+                </div>
                 <div class="description">
+                    Nazwa quizu: {{application.quiz_name}} </br>
                     Uzyskane punkty: {{application.score}} / {{application.full_score}} </br>
-                    <div class="status">Status aplikacji: </div>
-                    <div class="statusValue">
-                        {{application.status}}
-                    </div>
+                    Ocena : {{application.grade}}
+                    <div class="status">Status aplikacji: {{application.status}}</div>
+                    <a class="editButton" href="{% url 'recruiter_application_edit' application.id %}" style="float: right;">Edytuj</a>
                 </div>
             </div>
         </div>

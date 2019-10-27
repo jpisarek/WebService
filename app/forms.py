@@ -102,6 +102,16 @@ class ApplicationAddForm(ModelForm):
         return for_application
 
 
+class ApplicationRecruiterForm(ModelForm):
+    class Meta:
+        model = Application
+        fields = ('status', 'grade')
+        labels = {
+            'status': 'Status',
+            'grade': 'Ocena',
+        }
+
+        
 class LoginForm(ModelForm):
     class Meta:
         model = User

@@ -169,3 +169,47 @@ button[type=submit]:hover
 	margin-top: 10px;
 	text-align: justify;
 }
+
+.editButton,
+.description > button[id=saveButton]
+{
+	text-align: center;
+	background-color: #c0bfbf;
+	width: 70px;
+	font-size: 12px;
+	color: white;
+	padding: 10px 10px;
+	margin-top: 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	letter-spacing: 2px;
+	text-decoration: none!important;
+	float: right;
+}
+
+.editButton:hover,
+.description > button[id=saveButton]:hover
+{
+	color: white;
+	background-color: #adabab;
+}
+
+#form8
+{
+	margin-top: 10px;
+}
+
+#form8 > p > input
+{
+	background-color: #efefef;
+	color: #404040;
+	border: 2px solid #dddddd;
+	border-radius: 5px;
+	font-size: 16px;
+	padding: 4px;
+	box-sizing: border-box;
+	outline: none;
+	margin-top: 10px;
+	text-align: justify;
+}

@@ -26,14 +26,14 @@ class Candidate(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
-    description = models.CharField(max_length=200)
+    description = models.CharField(max_length=500)
 
     def __str__(self):
         return str(self.first_name + " " + self.last_name)
 
 
 class JobPosting(models.Model):
-    job_position = models.CharField(max_length=30)
+    job_position = models.CharField(max_length=100)
     description = models.CharField(max_length=500)
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
 
@@ -43,7 +43,7 @@ class JobPosting(models.Model):
 
 class Quiz(models.Model):
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=100)
     job_position = models.ForeignKey(JobPosting, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -62,7 +62,7 @@ class Question(models.Model):
 
 
 class Answer(models.Model):
-    content = models.CharField(max_length=300)
+    content = models.CharField(max_length=500)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     is_boolean = models.BooleanField(default=False)
 
@@ -73,7 +73,7 @@ class Answer(models.Model):
 class Application(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
     candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE)
-    description = models.CharField(max_length=200)
+    description = models.CharField(max_length=500)
     attachment = models.FileField()
     score = models.IntegerField(default=0)
     status = models.CharField(max_length=50, default="Rozpatrywana")

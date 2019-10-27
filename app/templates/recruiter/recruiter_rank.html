@@ -7,17 +7,42 @@
     <div class="rank">
         <table>
             <tr>
-                <th>Imię</th>
-                <th>Nazwisko</th>
-                <th>Opis</th>
+                <th>Kandydat</th>
+                <th>Stanowisko</th>
+                <th>Quiz</th>
+                <th>Punkty</th>
+                <th>Ocena</th>
+                <th>Status</th>
             </tr>
-            {% for candidate in candidates %}
+            {% for application in applications %}
             <tr>                    
-                <td>{{ candidate.first_name }}</td>
-                <td>{{ candidate.last_name }}</td>
-                <td>{{ candidate.description }}</td>
+                <td>{{ application.candidate_name }}</td>
+                <td>{{ application.position }}</td>
+                <td>{{ application.quiz_name }}</td>
+                <td>{{ application.score }} / {{ application.full_score }}</td>
+                <td>{{ application.grade }}</td>
+                <td class="statusValue">{{ application.status }}</td>
             </tr>
             {% endfor %}
     </table>
     </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            console.log("ready!");
+            $(".statusValue").each(function () {
+                if ($(this).html().includes("Rozpatrywana"))
+                    $(this).css("background-color", 'rgba(255, 198, 0, 0.5)');
+    
+                if ($(this).html().includes("Zaakceptowana"))
+                    $(this).css("background-color", 'rgba(0, 161, 0, 0.5)');
+    
+                if ($(this).html().includes("Odrzucona"))
+                    $(this).css("background-color", 'rgba(255, 1, 0, 0.5)');
+    
+            });
+    
+        });
+    </script>
+    
 {% endblock %}

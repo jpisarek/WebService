@@ -75,6 +75,7 @@ class Application(models.Model):
     description = models.CharField(max_length=500)
     attachment = models.FileField()
     score = models.IntegerField(default=0)
+    full_score = models.IntegerField(default=0)
     status = models.CharField(max_length=50, default="Rozpatrywana")
     grade = models.IntegerField(default=0)
 

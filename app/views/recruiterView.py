@@ -76,7 +76,6 @@ def recruiter_rank(request):
         quizes = Quiz.objects.get(id=quiz_id)
         applications[i].position = quizes
         applications[i].quiz_name = quizes.name
-        applications[i].full_score = len(Question.objects.all().filter(quiz_id=applications[i].quiz_id))
         applications[i].candidate_name = Candidate.objects.get(id=applications[i].candidate_id)
         i = i + 1
     return render(request, 'recruiter/recruiter_rank.html', {'applications': applications})
@@ -197,7 +196,6 @@ def recruiter_applications_overview(request):
         quizes = Quiz.objects.get(id=quiz_id)
         applications[i].position = quizes
         applications[i].quiz_name = quizes.name
-        applications[i].full_score = len(Question.objects.all().filter(quiz_id=applications[i].quiz_id))
         applications[i].candidate_name = Candidate.objects.get(id=applications[i].candidate_id)
         i = i + 1
     return render(request,'recruiter/recruiter_applications_overview.html', {'applications': applications})
@@ -207,7 +205,6 @@ def recruiter_application_edit(request, application_id):
     application = Application.objects.get(id=application_id)
     application.position = Quiz.objects.get(id=application.quiz_id)
     application.quiz_name = Quiz.objects.get(id=application.quiz_id).name
-    application.full_score = len(Question.objects.all().filter(quiz_id=application.quiz_id))
     application.candidate_name = Candidate.objects.get(id=application.candidate_id)
     
     if request.method == 'POST':

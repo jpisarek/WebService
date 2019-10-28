@@ -69,7 +69,7 @@ def candidate_quiz_start(request, quiz_id, application_id):
             answer = Answer.objects.get(id=answer_id)
             if answer.is_true == 1:
                 point_counter = point_counter + 1
-        application = Application.objects.filter(id=application_id).update(score=point_counter)
+        application = Application.objects.filter(id=application_id).update(score=point_counter, full_score=len(questions))
         return redirect('/candidate/%d/score' % (int(application_id),))
      
     return render(request, 'candidate/candidate_quiz_start.html', {'quiz_name': quiz_name, 'quiz_id': quiz_id, 'questions': questions})
@@ -108,6 +108,5 @@ def candidate_applications_overview(request):
             quizes = Quiz.objects.get(id=quiz_id)
             applications[i].position = quizes
             applications[i].quiz_name = quizes.name
-            applications[i].full_score = len(Question.objects.all().filter(quiz_id=applications[i].quiz_id))
             i = i + 1
         return render(request, 'candidate/candidate_applications_overview.html', {'applications': applications})

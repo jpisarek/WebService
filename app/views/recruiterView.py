@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
-from app.forms import SignUpForm, QuizAddForm, QuestionAddForm, AnswerAddForm, LoginForm, JobPostingAddForm, ApplicationAddForm, ApplicationRecruiterForm
+from app.forms import SignUpForm, QuizAddForm, QuestionAddForm, AnswerAddForm, LoginForm, JobPostingAddForm, ApplicationAddForm, ApplicationRecruiterForm, UserCreateForm
 from app.models import Organization, Recruiter, Candidate, Quiz, Question, Answer, JobPosting, User, Application
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -22,7 +22,7 @@ def home_page(request):
 
 def register_page(request):
     if request.method == 'POST':
-        user_form = UserCreationForm(request.POST)
+        user_form = UserCreateForm(request.POST)
         candidate_form = SignUpForm(request.POST)
         if user_form.is_valid() and candidate_form.is_valid():
             user = user_form.save()
@@ -31,7 +31,7 @@ def register_page(request):
             candidate.save()            
             return redirect('home_page')
     else:
-        user_form = UserCreationForm()
+        user_form = UserCreateForm()
         candidate_form = SignUpForm()
     return render(request, 'register.html', {'user_form': user_form, 'candidate_form': candidate_form})
 

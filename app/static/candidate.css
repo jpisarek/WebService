@@ -71,6 +71,12 @@ button[type=submit]:hover
 	background-color: rgba(0,0,0, 0.5);
 }
 
+#form2 > p > label
+{
+	display: block;
+	font-size: 15px;
+}
+
 #form1 > p > label[for=id_attachment]
 {
 	display: block;

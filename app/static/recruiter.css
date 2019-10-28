@@ -74,19 +74,19 @@ a.quizlink:hover
 #form3 > p > label 
 {
 	display: block;
-	padding: 3px;
+	font-size: 15px;
 }
 
 #form5 > p > label 
 {
 	display: block;
-	padding: 3px;
+	font-size: 15px;
 }
 
 #form6 > p > label 
 {
 	display: block;
-	padding: 3px;
+	font-size: 15px;
 }
 
 input[type=button],

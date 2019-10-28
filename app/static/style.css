@@ -97,6 +97,7 @@ textarea
 	padding: 3px;
 	justify-content: center;
 	display: flex;
+	font-size: 15px;
 }
 
 #form2 > p > input 
@@ -110,6 +111,7 @@ textarea
 	padding: 3px;
 	justify-content: center;
 	display: flex;
+	font-size: 15px;
 }
 
 .ui.cards>.card {

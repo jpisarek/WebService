@@ -3,11 +3,18 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from app.models import Candidate, Quiz, Question, Answer, JobPosting, Application
 from django.forms import ModelForm, Textarea, TextInput, FileField, ClearableFileInput
+from django.utils.translation import gettext, gettext_lazy as _
 
 class SignUpForm(ModelForm):
     class Meta:
         model = Candidate
         fields = ('first_name', 'last_name', 'email', 'description')
+        labels = {
+            'first_name': 'Imię',
+            'last_name': 'Nazwisko',
+            'email': 'Email',
+            'description': 'Opis osoby'
+        }
 
 
 class QuizAddForm(ModelForm):
@@ -116,7 +123,26 @@ class LoginForm(ModelForm):
     class Meta:
         model = User
         fields = ('username', 'password')
-
+        labels = {
+            'username': 'Nazwa użytkownika',
+            'password': 'Hasło',
+        }
         widgets = {
             'password': TextInput(attrs={'type': 'password'})
         }
+
+
+class UserCreateForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ('username', 'password1', 'password2')
+        labels = {
+            'username': 'Nazwa użytkownika',
+            'password1': 'Hasło',
+            'password2': 'Ponów hasło',
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(UserCreateForm, self).__init__(*args, **kwargs)
+        self.fields['password1'].label = "Hasło"
+        self.fields['password2'].label = "Ponów hasło"

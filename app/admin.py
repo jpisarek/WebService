@@ -40,12 +40,12 @@ class QuestionAdmin(admin.ModelAdmin):
 
 @admin.register(Answer)
 class AnswerAdmin(admin.ModelAdmin):
-    search_fields = ['content', 'question', 'is_boolean']
-    fields = ('content', 'question', 'is_boolean')
-    list_display = ('content', 'question', 'is_boolean')
+    search_fields = ['content', 'question', 'is_true']
+    fields = ('content', 'question', 'is_true')
+    list_display = ('content', 'question', 'is_true')
 
 @admin.register(Application)
 class ApplicationAdmin(admin.ModelAdmin):
-    search_fields = ['description', 'attachment', 'score', 'status']
-    fields = ('description', 'attachment', 'score', 'status')
-    list_display = ('description', 'attachment', 'score', 'status')
+    search_fields = ['candidate', 'quiz','score',  'grade','status']
+    fields = ('candidate', 'quiz','score', 'grade', 'status')
+    list_display = ('candidate', 'quiz','score', 'grade', 'status')

@@ -8,12 +8,11 @@ from django.utils.translation import gettext, gettext_lazy as _
 class SignUpForm(ModelForm):
     class Meta:
         model = Candidate
-        fields = ('first_name', 'last_name', 'email', 'description')
+        fields = ('first_name', 'last_name', 'email')
         labels = {
             'first_name': 'Imię',
             'last_name': 'Nazwisko',
-            'email': 'Email',
-            'description': 'Opis osoby'
+            'email': 'Email'
         }
 
 
@@ -58,10 +57,10 @@ class QuestionAddForm(ModelForm):
 class AnswerAddForm(ModelForm):
     class Meta:
         model = Answer
-        fields = ('content', 'is_boolean',)
+        fields = ('content', 'is_true',)
         labels = {
             'content': 'Odpowiedź',
-            'is_boolean': 'Poprawna'
+            'is_true': 'Poprawna'
         }
         widgets = {
             'content': Textarea(attrs={'cols': 100, 'rows': 2}),

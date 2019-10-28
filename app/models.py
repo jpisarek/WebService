@@ -26,7 +26,6 @@ class Candidate(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
-    description = models.CharField(max_length=500)
 
     def __str__(self):
         return str(self.first_name + " " + self.last_name)
@@ -64,10 +63,10 @@ class Question(models.Model):
 class Answer(models.Model):
     content = models.CharField(max_length=500)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    is_boolean = models.BooleanField(default=False)
+    is_true = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.is_boolean)
+        return str(self.is_true)
 
 
 class Application(models.Model):

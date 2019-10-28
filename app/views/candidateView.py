@@ -67,7 +67,7 @@ def candidate_quiz_start(request, quiz_id, application_id):
             answer_id = str(y[length]).replace("['", '')
             answer_id = str(answer_id).replace("']", '')
             answer = Answer.objects.get(id=answer_id)
-            if answer.is_boolean == 1:
+            if answer.is_true == 1:
                 point_counter = point_counter + 1
         application = Application.objects.filter(id=application_id).update(score=point_counter)
         return redirect('/candidate/%d/score' % (int(application_id),))

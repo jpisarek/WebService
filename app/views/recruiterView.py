@@ -47,8 +47,10 @@ def login_page(request):
         if user is not None:
             login(request, user)
             log_user = User.objects.all().filter(username=username)            
-            if log_user[0].is_staff == 1:
+            if log_user[0].is_staff == 1 and log_user[0].is_superuser == 0:
                 return redirect('recruiter_home')
+            elif log_user[0].is_superuser == 1:
+                return redirect('/admin/')
             else:
                 return redirect('candidate_home')
         else:
@@ -132,17 +134,17 @@ def recruiter_answer_add(request, question_id):
   
         if formset[0].is_valid():
             content = formset[0].cleaned_data.get('content')
-            is_boolean = formset[0].cleaned_data.get('is_boolean')
+            is_true = formset[0].cleaned_data.get('is_true')
             formset[0].save(for_question=question_)
 
         if formset[1].is_valid():
             content = formset[1].cleaned_data.get('content')
-            is_boolean = formset[1].cleaned_data.get('is_boolean')
+            is_true = formset[1].cleaned_data.get('is_true')
             formset[1].save(for_question=question_)
 
         if formset[2].is_valid():
             content = formset[2].cleaned_data.get('content')
-            is_boolean = formset[2].cleaned_data.get('is_boolean')
+            is_true = formset[2].cleaned_data.get('is_true')
             formset[2].save(for_question=question_)
             question_iD = int(question_id)
             return redirect('/recruiter/quiz/%d/question/' % (quiz_id,))

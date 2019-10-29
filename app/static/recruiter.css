@@ -12,15 +12,15 @@ table
 
 td
 {
-	border: 1px solid rgba(0,0,0,0.5);
+	border: 1px solid rgba(0,0,0,0.2);
   	text-align: left;
 	padding: 8px;
-	background-color: #fff;
+	background-color: rgba(255,255,255,0.4);
 }
 
 th
 {
-	border: 1px solid rgba(0,0,0,0.5);
+	border: 1px solid rgba(0,0,0,0.2);
   	text-align: left;
 	padding: 8px;
 	background-color: inherit;
@@ -213,4 +213,10 @@ button[type=submit]:hover
 	outline: none;
 	margin-top: 10px;
 	text-align: justify;
+}
+
+.status
+{
+	float: left;
+	margin-right: 5px;;
 }

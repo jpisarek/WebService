@@ -1,4 +1,4 @@
-{% extends 'recruiter/recruiter_home.html' %}
+{% extends 'recruiter/basic.html' %}
 
 {% block overviewquiz %}
 <div class="header">
@@ -17,13 +17,39 @@
                 <div class="description">
                     Nazwa quizu: {{application.quiz_name}} </br>
                     Uzyskane punkty: {{application.score}} / {{application.full_score}} </br>
-                    Ocena : {{application.grade}}
-                    <div class="status">Status aplikacji: {{application.status}}</div>
+                    <div class="gradeValue">
+                        Ocena: {{application.grade}}
+                    </div>
+                    <div class="status">Status aplikacji: </div>
+                    <div class="statusValue">
+                        {{application.status}}
+                    </div>
                     <a class="editButton" href="{% url 'recruiter_application_edit' application.id %}" style="float: right;">Edytuj</a>
                 </div>
             </div>
         </div>
     </div>
 {% endfor %}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".statusValue").each(function () {
+            if ($(this).html().includes("Rozpatrywana"))
+                $(this).css("color", 'rgb(255, 198, 0)');
+
+            if ($(this).html().includes("Zaakceptowana"))
+                $(this).css("color", 'rgb(0, 161, 0)');
+
+            if ($(this).html().includes("Odrzucona"))
+                $(this).css("color", 'rgb(255, 1, 0)');
+
+        });
+        $(".gradeValue").each(function() {
+            if ($(this).html().includes("Ocena: 0"))
+            $(this).html("Ocena: Brak")
+        });
+
+    });
+</script>
 
 {% endblock %}

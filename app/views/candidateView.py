@@ -10,7 +10,8 @@ from django.forms import formset_factory
 
 @login_required(login_url='/login')
 def candidate_home(request):
-    return render(request, 'candidate/candidate_home.html')
+    user = User.objects.get(username=request.user)
+    return render(request, 'candidate/candidate_home.html', {'user': user})
 
 
 @login_required(login_url='/login')

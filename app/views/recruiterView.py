@@ -62,7 +62,8 @@ def login_page(request):
 
 @login_required(login_url='/login')
 def recruiter_home(request):
-    return render(request, 'recruiter/recruiter_home.html')
+    user = User.objects.get(username=request.user)
+    return render(request, 'recruiter/recruiter_home.html', {'user': user})
 
 
 @login_required(login_url='/login')

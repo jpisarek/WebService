@@ -107,7 +107,7 @@ def candidate_applications_overview(request):
         for app in applications:
             quiz_id = app.quiz_id
             quizes = Quiz.objects.get(id=quiz_id)
-            applications[i].position = quizes
+            applications[i].position = JobPosting.objects.get(id=quizes.job_position_id)
             applications[i].quiz_name = quizes.name
             i = i + 1
         return render(request, 'candidate/candidate_applications_overview.html', {'applications': applications})

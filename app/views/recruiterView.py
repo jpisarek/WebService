@@ -75,7 +75,7 @@ def recruiter_rank(request):
     for app in applications:
         quiz_id = app.quiz_id
         quizes = Quiz.objects.get(id=quiz_id)
-        applications[i].position = quizes
+        applications[i].position = JobPosting.objects.get(id=quizes.job_position_id)
         applications[i].quiz_name = quizes.name
         applications[i].candidate_name = Candidate.objects.get(id=applications[i].candidate_id)
         i = i + 1
@@ -195,7 +195,7 @@ def recruiter_applications_overview(request):
     for app in applications:
         quiz_id = app.quiz_id
         quizes = Quiz.objects.get(id=quiz_id)
-        applications[i].position = quizes
+        applications[i].position = JobPosting.objects.get(id=quizes.job_position_id)
         applications[i].quiz_name = quizes.name
         applications[i].candidate_name = Candidate.objects.get(id=applications[i].candidate_id)
         i = i + 1
@@ -204,7 +204,8 @@ def recruiter_applications_overview(request):
 
 def recruiter_application_edit(request, application_id):
     application = Application.objects.get(id=application_id)
-    application.position = Quiz.objects.get(id=application.quiz_id)
+    quizes = Quiz.objects.get(id=application.quiz_id)
+    application.position = JobPosting.objects.get(id=quizes.job_position_id)
     application.quiz_name = Quiz.objects.get(id=application.quiz_id).name
     application.candidate_name = Candidate.objects.get(id=application.candidate_id)
     

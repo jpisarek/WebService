@@ -46,7 +46,7 @@ class Quiz(models.Model):
     job_position = models.ForeignKey(JobPosting, on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.job_position)
+        return str(self.name)
 
     def get_absolute_url(self):
         return reverse('recruiter_question_add', args=[self.id])

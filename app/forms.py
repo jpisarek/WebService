@@ -119,6 +119,9 @@ class ApplicationRecruiterForm(ModelForm):
 
         
 class LoginForm(ModelForm):
+    error_messages = {
+        'incorrect_password': 'Błędne hasło dla podanego użytkownika'
+    }
     class Meta:
         model = User
         fields = ('username', 'password')
@@ -130,6 +133,17 @@ class LoginForm(ModelForm):
             'password': TextInput(attrs={'type': 'password'})
         }
 
+    def clean_username(self):
+        username = self.cleaned_data["username"]       
+        try:
+            User._default_manager.get(username=username)
+            raise forms.ValidationError( 
+              self.error_messages['incorrect_password'],
+              code='incorrect_password',
+                )
+        except User.DoesNotExist:
+            return username
+            
 
 class UserCreateForm(UserCreationForm):
     class Meta:

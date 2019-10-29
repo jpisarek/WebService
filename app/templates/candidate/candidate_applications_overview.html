@@ -13,6 +13,9 @@
                 <div class="meta">Nazwa quizu: {{application.quiz_name}}</div>
                 <div class="description">
                     Uzyskane punkty: {{application.score}} / {{application.full_score}} </br>
+                    <div class="gradeValue">
+                        Ocena: {{application.grade}}
+                    </div>
                     <div class="status">Status aplikacji: </div>
                     <div class="statusValue">
                         {{application.status}}
@@ -25,7 +28,6 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        console.log("ready!");
         $(".statusValue").each(function () {
             if ($(this).html().includes("Rozpatrywana"))
                 $(this).css("color", 'rgb(255, 198, 0)');
@@ -36,6 +38,10 @@
             if ($(this).html().includes("Odrzucona"))
                 $(this).css("color", 'rgb(255, 1, 0)');
 
+        });
+        $(".gradeValue").each(function() {
+            if ($(this).html().includes("Ocena: 0"))
+            $(this).html("Ocena: Brak")
         });
 
     });

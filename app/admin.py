@@ -16,9 +16,9 @@ class RecruiterAdmin(admin.ModelAdmin):
 
 @admin.register(Candidate)
 class CandidateAdmin(admin.ModelAdmin):
-    search_fields = ['user', 'first_name', 'last_name']
-    fields = ('user', 'first_name', 'last_name')
-    list_display = ('user', 'first_name', 'last_name')
+    search_fields = ['user', 'first_name', 'last_name', 'email']
+    fields = ('user', 'first_name', 'last_name', 'email')
+    list_display = ('user', 'first_name', 'last_name', 'email')
 
 @admin.register(JobPosting)
 class JobPostingAdmin(admin.ModelAdmin):
@@ -46,6 +46,6 @@ class AnswerAdmin(admin.ModelAdmin):
 
 @admin.register(Application)
 class ApplicationAdmin(admin.ModelAdmin):
-    search_fields = ['candidate', 'quiz','score',  'grade','status']
-    fields = ('candidate', 'quiz','score', 'grade', 'status')
-    list_display = ('candidate', 'quiz','score', 'grade', 'status')
+    search_fields = ['candidate', 'quiz', 'score', 'full_score', 'grade', 'status']
+    fields = ('candidate', 'quiz', 'score', 'full_score', 'grade', 'status')
+    list_display = ('candidate', 'quiz', 'score', 'full_score', 'grade', 'status')

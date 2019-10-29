@@ -33,6 +33,10 @@ class QuizAddForm(ModelForm):
         self.instance.organization_id = for_organization
         return super().save()
 
+    def __init__(self, organization, *args, **kwargs):
+        super(QuizAddForm, self).__init__(*args, **kwargs)
+        self.fields['job_position'].queryset = JobPosting.objects.filter(organization_id = organization)
+
 
 class QuestionAddForm(ModelForm):
     class Meta:

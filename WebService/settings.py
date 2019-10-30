@@ -87,10 +87,15 @@ REST_FRAMEWORK = {
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'WebService',
+        'USER': 'root',
+        'PASSWORD': 'Yellow20001',
+        'HOST': 'localhost', 
+        'PORT': '3306',
     }
 }
+
 
 
 # Password validation

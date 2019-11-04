@@ -90,13 +90,13 @@ def recruiter_quiz_add(request):
         quiz_form = QuizAddForm(request.POST, organization)
         if quiz_form.is_valid():
             name = quiz_form.cleaned_data.get('name')
-            job_position = quiz_form.cleaned_data.get('job_position')
             quiz_form.save(for_organization=organization)
             quiz_id = quiz_form.take_id()
             return redirect('/recruiter/quiz/%d/question/' % (quiz_id,))
     else:
-        quiz_form = QuizAddForm(organization)
-    return render(request, 'recruiter/recruiter_quiz_add.html', {'quiz_form': quiz_form, 'organization': organization},)
+        quiz_form = QuizAddForm()
+        quiz_form.fields["job_position"].queryset = JobPosting.objects.filter(organization_id = organization)
+    return render(request, 'recruiter/recruiter_quiz_add.html', {'quiz_form': quiz_form,},)
 
 
 @login_required(login_url='/login')

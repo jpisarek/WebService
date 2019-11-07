@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
 from app.forms import SignUpForm, QuizAddForm, QuestionAddForm, AnswerAddForm, LoginForm, JobPostingAddForm, ApplicationAddForm, ApplicationRecruiterForm, UserCreateForm
-from app.models import Organization, Recruiter, Candidate, Quiz, Question, Answer, JobPosting, User, Application
+from app.models import Organization, Recruiter, Candidate, Quiz, Question, Answer, JobPosting, User, Application, QuizResult
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.forms import formset_factory
@@ -208,6 +208,16 @@ def recruiter_application_edit(request, application_id):
     application.position = JobPosting.objects.get(id=quizes.job_position_id)
     application.quiz_name = Quiz.objects.get(id=application.quiz_id).name
     application.candidate_name = Candidate.objects.get(id=application.candidate_id)
+
+    questions = Question.objects.all().filter(quiz_id=application.quiz_id)
+    results = QuizResult.objects.all().filter(application_id=application_id)
+    for q in range(len(results)):
+        questions_id = results[q].question
+        answer_id = results[q].candidate_answer
+        results[q].question_content = Question.objects.get(id=results[q].question)
+        results[q].answer_content = Answer.objects.get(id=results[q].candidate_answer).content
+    
+    print(results)
     
     if request.method == 'POST':
         application_recruit_form = ApplicationRecruiterForm(request.POST, instance=application)
@@ -218,4 +228,4 @@ def recruiter_application_edit(request, application_id):
             return redirect('/recruiter/applications/')
     else:
         application_recruit_form = ApplicationRecruiterForm(instance=application)
-    return render(request, 'recruiter/recruiter_application_edit.html', {'application': application, 'application_recruit_form': application_recruit_form})
+    return render(request, 'recruiter/recruiter_application_edit.html', {'application': application, 'application_recruit_form': application_recruit_form, 'questions': questions, 'results': results})

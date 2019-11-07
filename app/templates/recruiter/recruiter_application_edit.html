@@ -29,4 +29,28 @@
     </div>
 </div>
 
+<div class="ui cards">
+    <div class="card">
+        <div class="content">
+            <div class="header">Historia odpowiedzi</div>
+            <div class="meta">
+                <div class="dane"></div>
+                <div class="dane"></div>
+            </div>
+            <div class="description">
+                {% for result in results %}
+                    <p class="x" style="color: rgba(0, 0, 0, 0.8);">{{ result.question_content }}</p>
+                    <div>
+                        {% if result.is_correct == 1 %}                        
+                        <p class="x" style="color: rgba(68, 206, 55, 0.8);">{{ result.answer_content }}</p>
+                        {% else %}
+                        <p class="x" style="color: rgba(187, 23, 23, 0.8);">{{ result.answer_content }}</p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

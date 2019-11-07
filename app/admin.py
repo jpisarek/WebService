@@ -49,3 +49,9 @@ class ApplicationAdmin(admin.ModelAdmin):
     search_fields = ['candidate', 'quiz', 'score', 'full_score', 'grade', 'status']
     fields = ('candidate', 'quiz', 'score', 'full_score', 'grade', 'status')
     list_display = ('candidate', 'quiz', 'score', 'full_score', 'grade', 'status')
+
+@admin.register(QuizResult)
+class QuizResultAdmin(admin.ModelAdmin):
+    search_fields = ['application_id', 'candidate_answer', 'question']
+    fields = ('application_id', 'questcandidate_answerion', 'question')
+    list_display = ('application_id', 'candidate_answer', 'question')

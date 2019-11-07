@@ -10,19 +10,19 @@
     
         <form method="POST" action="recruiter_question_add" id="form1">
             {% csrf_token %}
-
+    
             <div class="oldquestions">
                 {% for question in questions %}
-                    <p style="color: rgba(0,0,0,.8);">{{ question.content }}</p>
-                    <div>
-                        {% for answer in question.answers %}
-                            <p style="color: rgba(0,0,0,.8);">{{ answer.content }}</p>
-                            <input type="radio" name="{{ question.id }}"  value="{{ answer.id }}">
-                        {% endfor %}
-                    </div>
+                <p style="color: rgba(0,0,0,.8);">{{ forloop.counter }}. {{ question.content }}</p>
+                <div>
+                    {% for answer in question.answers %}
+                    <p style="color: rgba(0,0,0,.8);">{{ answer.content }}</p>
+                    <input type="radio" name="{{ question.id }}" value="{{ answer.id }}">
+                    {% endfor %}
+                </div>
                 {% endfor %}
             </div>
-
+    
         </form>
     
     </div>

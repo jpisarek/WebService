@@ -81,3 +81,11 @@ class Application(models.Model):
 
     def __str__(self):
         return str(self.quiz)
+
+
+class QuizResult(models.Model):
+    application = models.ForeignKey(Application, on_delete=models.CASCADE)
+    question = models.CharField(max_length=500)
+    candidate_answer = models.CharField(max_length=500)
+    is_correct = models.BooleanField(default=False)
+    

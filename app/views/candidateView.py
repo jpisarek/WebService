@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
 from app.forms import SignUpForm, QuizAddForm, QuestionAddForm, AnswerAddForm, LoginForm, JobPostingAddForm, ApplicationAddForm, ApplicationRecruiterForm
-from app.models import Organization, Recruiter, Candidate, Quiz, Question, Answer, JobPosting, User, Application
+from app.models import Organization, Recruiter, Candidate, Quiz, Question, Answer, JobPosting, User, Application, QuizResult
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.forms import formset_factory
@@ -68,7 +68,18 @@ def candidate_quiz_start(request, quiz_id, application_id):
             answer_id = str(y[length]).replace("['", '')
             answer_id = str(answer_id).replace("']", '')
             answer = Answer.objects.get(id=answer_id)
+
+            question_id = answer.question_id
+            question = Question.objects.get(id=question_id)
+
+            result = QuizResult.objects.create(application_id = application_id)
+            result.question = question_id
+            result.candidate_answer = answer_id
+            result.save()
+            
             if answer.is_true == 1:
+                result.is_correct = 'True'
+                result.save()
                 point_counter = point_counter + 1
         application = Application.objects.filter(id=application_id).update(score=point_counter, full_score=len(questions))
         return redirect('/candidate/%d/score' % (int(application_id),))

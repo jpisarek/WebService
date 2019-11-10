@@ -7,16 +7,20 @@
         <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
         <link href="https://fonts.googleapis.com/css?family=Lato:400,900&amp;subset=latin-ext" rel="stylesheet"> 
     </head>
-    <body>        
-        <div class="header">
-            <h1>reQuizyt</h1>
-            <h2>Rekrutacja na stanowisko programisty</h2>       
+    <body>
+        <div class="home_container">
+            <div class="inside_container">
+                <div class="header_main">
+                    <h1>reQuizyt</h1>
+                    <h2>Rekrutacja na stanowisko programisty</h2>
+                </div>
+        
+                <div class="buttons_home">
+                    <button id="regButton">Zarejestruj się</button>
+                    <button id="logButton">Zaloguj się</button>
+                </div>
+            </div>
         </div>
-
-        <div class="buttons_home">
-                <button id="regButton" >Zarejestruj się</button>
-                <button id="logButton" >Zaloguj się</button>
-        </div> 
 
         <script type="text/javascript">
             document.getElementById("regButton").onclick = function () {

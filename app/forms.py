@@ -79,6 +79,9 @@ class JobPostingAddForm(ModelForm):
             'job_position': 'Pozycja',
             'description': 'Opis stanowiska'
         }
+        widgets = {
+            'description': Textarea(attrs={'cols': 80, 'rows': 8}),
+        }
 
     def save(self, for_organization):
         self.instance.organization_id = for_organization

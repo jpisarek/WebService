@@ -104,3 +104,45 @@ button[type=submit]:hover
 	float: left;
 	margin-right: 5px;;
 }
+
+#form2 > p > textarea[name=description]
+{
+	width: 600px;
+	height: 150px;
+	background-color: #efefef;
+	color: #404040;
+	border: 2px solid #dddddd;
+	border-radius: 5px;
+	font-size: 16px;
+	padding: 4px;
+	box-sizing: border-box;
+	outline: none;
+	margin-top: 10px;
+	text-align: justify;
+}
+
+#form1 > .oldquestions > .answers > .container2 > .right > textarea
+{
+	width: 100%;
+	box-shadow: none;
+	overflow: auto;
+	outline: none;
+	resize: none
+}
+
+#form1 > .oldquestions > .answers > .container2 > .left > input
+{
+	margin-top: 13px;
+}
+
+.container2 {
+	display: flex;
+  }
+  
+  .left {
+	flex: 0 0 15%;
+  }
+  
+  .right {
+	flex: 1;
+  }

@@ -155,7 +155,7 @@ button[type=submit]:hover
 	margin-top: 10px;
 }
 
-#form6 > p > input[id=id_description]
+#form6 > p > textarea[name=description]
 {
 	width: 600px;
 	height: 150px;
@@ -224,4 +224,9 @@ button[type=submit]:hover
 .candidate_answer
 {
 	margin-left: 17px;
+}
+
+.candidate_answer > textarea
+{
+	width: 100%;
 }

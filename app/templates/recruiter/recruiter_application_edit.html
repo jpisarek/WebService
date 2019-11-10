@@ -46,9 +46,9 @@
                             </p>
                             <div class="candidate_answer">
                                 {% if result.is_correct == 1 %}
-                                <p class="x" style="color: rgba(68, 206, 55, 0.8);">{{ result.answer_content }}</p>
+                                <textarea style="color: rgba(68, 206, 55, 0.8);">{{ result.answer_content }}</textarea>
                                 {% else %}
-                                <p class="x" style="color: rgba(187, 23, 23, 0.8);">{{ result.answer_content }}</p>
+                                <textarea style="color: rgba(187, 23, 23, 0.8);">{{ result.answer_content }}</textarea>
                                 {% endif %}
                             </div>
                         </div>

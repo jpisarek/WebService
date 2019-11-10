@@ -13,11 +13,24 @@
     
             <div class="oldquestions">
                 {% for question in questions %}
-                <p style="color: rgba(0,0,0,.8);">{{ forloop.counter }}. {{ question.content }}</p>
-                <div>
+                <div class="ui cards">
+                    <div class="card">
+                        <div class="content" style="margin-bottom: -13px;">
+                            <p style="color: rgba(0,0,0,.8);">{{ forloop.counter }}. {{ question.content }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="answers">
                     {% for answer in question.answers %}
-                    <p style="color: rgba(0,0,0,.8);">{{ answer.content }}</p>
-                    <input type="radio" name="{{ question.id }}" value="{{ answer.id }}">
+    
+                    <section class="container2">
+                        <div class="left">
+                            <input type="radio" name="{{ question.id }}" value="{{ answer.id }}">
+                        </div>
+                        <div class="right">
+                            <textarea readonly style="color: rgba(0,0,0,.8);">{{ answer.content }}</textarea>
+                        </div>
+                    </section>
                     {% endfor %}
                 </div>
                 {% endfor %}
@@ -30,5 +43,15 @@
     <div class="buttons">
         <button type="submit" value="Submit" form="form1" id="submitquizButton">Wyślij quiz</button>
     </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(function () {
+                $("textarea").each(function () {
+                    this.style.height = (this.scrollHeight + 10) + 'px';
+                });
+            });
+        });
+    </script>
 
 {% endblock %}

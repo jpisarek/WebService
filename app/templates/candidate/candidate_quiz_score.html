@@ -1,14 +1,18 @@
 {% extends 'candidate/basic.html' %}
 
 {% block overviewquiz %}
-    <div class="header">
-        <h3>Udało Ci się rozwiązać quiz!</h3>
+<div class="header">
+    <div class="ui cards">
+        <div class="card" style="width: 1200px; height: 200px;">
+            <div class="content">
+                <div class="site_name">Udało Ci się rozwiązać quiz!</div>
+                <div class="score">
+                    <p style="font-size: 20px;">Twój wynik to: {{ application.score }} / {{ questions }}</p>
+                    <p>Aby dowiedzieć się jaki jest status Twojej aplikacji przejdź do zakładki Aplikacje. </br> Jeżeli jeszcze nic się nie zmieniło, nie martw się - już wkrótce rekruter zmodyfikuje status!</p>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="score">
-        <p style="font-size: 20px;">Twój wynik to: {{ application.score }} / {{ questions }}</p>
-        <p>Aby dowiedzieć się jaki jest status Twojej aplikacji przejdź do zakładki Aplikacje. </br> Jeżeli jeszcze nic się nie zmieniło, nie martw się - już wkrótce rekruter zmodyfikuje status!</p>
-    </div>
-
+</div>
 
 {% endblock %}

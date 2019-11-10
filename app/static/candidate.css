@@ -97,6 +97,7 @@ button[type=submit]:hover
 .score
 {
 	text-align: center;
+	padding-top: 35px;
 }
 
 .status

@@ -142,7 +142,7 @@ textarea
     flex-direction: column;
     width: 600px;
     min-height: 0;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.7);
     padding: 0;
     border: none;
     border-radius: 5px;
@@ -182,4 +182,10 @@ textarea
 .ui.cards>.card>.content>.description {
     clear: both;
     color: rgba(0,0,0,.68);
+}
+
+.site_name
+{
+	font-size: 20px;
+	letter-spacing: 2px;
 }

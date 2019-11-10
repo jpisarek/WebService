@@ -2,7 +2,13 @@
 
 {% block overviewquiz %}
 <div class="header">
-    <h3>Aplikacja kandydata: {{application.candidate_name}}</h3>
+    <div class="ui cards">
+        <div class="card" style="width: 1200px; height: 55px;">
+            <div class="content">
+                <div class="site_name">Aplikacja kandydata: {{application.candidate_name}}</div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="ui cards">
